@@ -2,6 +2,8 @@
 layout: page
 title: About
 permalink: /about/
+menu: main
+weight: 90
 ---
 
 {% include _links_library.markdown %}
