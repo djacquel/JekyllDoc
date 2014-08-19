@@ -2,7 +2,7 @@
 title: Jeckyll documentation and testbed
 email: david.jacquel@gmail.com
 
-description: "This is my personal Jekyll documentation."
+description: "This is my personal Jekyll documentation and testbed."
 
 baseurl: "/JekyllDoc"
 url: "http://pygmeeweb.com"
@@ -13,3 +13,12 @@ github_username:  djacquel
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+
+sass:
+  sass_dir: assets/stylesheets
+
+
+# packages versions
+
+twb-sass-version: 2.3.0
