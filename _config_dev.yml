@@ -1,0 +1,7 @@
+# local config
+# use with : jekyll build --config _config.yml,_config_dev.yml
+baseurl: "/jekyll/doc/_site"
+url: "http://test.dev"
+
+
+
