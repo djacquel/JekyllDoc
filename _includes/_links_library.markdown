@@ -28,7 +28,7 @@ this is the include tag. just remove the **remove**
 
 [jekyll-gh]: https://github.com/jekyll/jekyll
 [jekyll]:    http://jekyllrb.com
-
+[kramdown]:  http://kramdown.gettalong.org/documentation.html
 
 [twb]: http://getbootstrap.com/
 [twb-customize]: http://getbootstrap.com/customize/
@@ -37,3 +37,5 @@ this is the include tag. just remove the **remove**
 
 [Less]: http://lesscss.org/
 [Sass]: http://sass-lang.com/
+
+
