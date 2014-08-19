@@ -3,5 +3,5 @@
 baseurl: "/jekyll/doc/_site"
 url: "http://test.dev"
 
-
+googleAnalyticsCode: NOCODE
 
