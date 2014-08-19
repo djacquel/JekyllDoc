@@ -1,0 +1,18 @@
+---
+---
+
+@import"bootstrap";
+
+.externalLink{
+    background: url(../img/external_link_icon_black.gif) no-repeat top right;
+    padding-right: 13px;
+}
+
+.externalLink.btn-sm, .noIcon .externalLink.btn-sm{
+  padding: 5px 10px;
+}
+
+.noIcon a.externalLink{
+    background-image: none;
+    padding: 0;
+}
