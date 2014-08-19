@@ -14,6 +14,8 @@ github_username:  djacquel
 markdown: kramdown
 permalink: pretty
 
+kramdown:
+  input: GFM
 
 sass:
   sass_dir: assets/stylesheets
@@ -23,3 +25,10 @@ googleAnalyticsCode: UA-157621-1
 # packages versions
 
 twb-sass-version: 2.3.0
+
+exclude:
+  - assets/stylesheets/variables.scss
+  - assets/stylesheets/bootstrap
+  - readme.md
+
+include: []
