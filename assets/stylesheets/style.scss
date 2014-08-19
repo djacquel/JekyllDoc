@@ -3,6 +3,12 @@
 
 @import"bootstrap";
 
+
+
+
+/* ==========================================================================
+   External links icon
+   ========================================================================== */
 .externalLink{
     background: url(../img/external_link_icon_black.gif) no-repeat top right;
     padding-right: 13px;
@@ -15,4 +21,16 @@
 .noIcon a.externalLink{
     background-image: none;
     padding: 0;
+}
+
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
 }
