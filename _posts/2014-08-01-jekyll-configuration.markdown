@@ -13,17 +13,15 @@ If you want to install Jekyll, see documentation on [Jekyll website][jekyll], an
 Configuration differs between development and production platforms.
 We then need to have two different config files.
 
-The production setup is in *_config.yml* and the development
-setup, in *_config_dev.yml*, which, at least contents :
+The production setup is in `_config.yml` and the development setup, in `_config_dev.yml`, with this minimum content :
 
 {% highlight yaml %}
 baseurl: "/jekyll/doc/_site"
 url: "http://test.dev"
 {% endhighlight %}
 
-Note: **baseurl** is very important to set, more than **url**.
-This because, it's used to reach assets (css, js, images) by
-prepending it to url.
+**Note**: `baseurl` is very important to set, more than `url`.
+This because, it's used to reach assets (css, js, images) by`prepending it to url.
 
 {% highlight liquid %}
 {% raw %}
@@ -39,7 +37,7 @@ Then in development environment, we just have to do :
 jekyll build --config _config.yml,_config_dev.yml
 {% endhighlight %}
 
-With *watch* :
+With `watch` :
 
 {% highlight yaml %}
 jekyll build --config _config.yml,_config_dev.yml -w

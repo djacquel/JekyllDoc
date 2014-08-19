@@ -22,7 +22,7 @@ so, let's go with it !
 
 - Download zip archive from [release page][twb-sass-release].
 
-- Unzip the **assets** folder at the root of your site.
+- Unzip the `assets` folder at the root of your site.
 
 ### Configure Jekyll
 
@@ -33,7 +33,7 @@ sass:
     sass_dir: assets/css
 {% endhighlight %}
 
-- Create an **assets/stylesheets/style.scss** fill with minimum content :
+- Create an `assets/stylesheets/style.scss` fill with minimum content :
 
 {% highlight css %}
 ---
@@ -42,7 +42,7 @@ sass:
 @import"bootstrap";
 {% endhighlight %}
 
-- Include your news Sass generated style sheet in **_includes/head.html**
+- Include your news Sass generated style sheet in `_includes/head.html`
 
 {% highlight liquid %}
 {% raw %}
@@ -50,7 +50,7 @@ sass:
 {% endraw %}
 {% endhighlight %}
 
-- Include bootstrap javascript by adding tags to **_includes/footer.html** at the very end of the file :
+- Include bootstrap javascript by adding tags to `_includes/footer.html` at the very end of the file :
 
 {% highlight liquid %}
 {% raw %}
@@ -59,20 +59,20 @@ sass:
 {% endraw %}
 {% endhighlight %}
 
-- Copy **assets/stylesheets/bootstrap/_variables.scss** to **assets/stylesheets/variables.scss**
+- Copy `assets/stylesheets/bootstrap/_variables.scss` to `assets/stylesheets/variables.scss`
 
-- In **assets/stylesheets/bootstrap.scss** change import rule **@import "bootstrap/variables";** to **@import "variables";**
+- In `assets/stylesheets/bootstrap.scss` change import rule `@import "bootstrap/variables";` to `@import "variables";`
 
-- In **assets/stylesheets/variables.scss** change Glyphicon path to **$icon-font-path: "../fonts/bootstrap/" !default;**
+- In `assets/stylesheets/variables.scss` change Glyphicon path to `$icon-font-path: "../fonts/bootstrap/" !default;`
 
 ### Customizing
 
-To change your site appearance, you just have to change values in **assets/stylesheets/variables.scss**.
+To change your site appearance, you just have to change values in `assets/stylesheets/variables.scss`.
 
-And you can add styles in **assets/stylesheets/style.scss**.
+And you can add styles in `assets/stylesheets/style.scss`.
 
-Just do a **Jekyll build**, and your scss files are proccessed and a
-resulting file is then present in **_site/assets/stylesheets/style.css**.
+Just do a `Jekyll build`, and your scss files are proccessed and a
+resulting file is then present in `_site/assets/stylesheets/style.css`.
 
 Nice !
 <span class="glyphicon glyphicon-thumbs-up"></span>
