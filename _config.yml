@@ -1,8 +1,8 @@
 # Site settings
-title: Jeckyll documentation and testbed
+title: Jeckyll testbed
 email: david.jacquel@gmail.com
 
-description: "This is my personal Jekyll documentation and testbed."
+description: "This is my personal Jekyll testbed."
 
 baseurl: "/JekyllDoc"
 url: "http://pygmeeweb.com"
