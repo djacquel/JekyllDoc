@@ -4,7 +4,11 @@
   <body>
     <div class="container">
       {% include header.html %}
-      {{ content }}
+      <div class="row">
+        <article class="col-lg-10 col-lg-offset-1">
+          {{ content }}
+        </article>
+      </div>
       {% include footer.html %}
     </div>
   </body>
