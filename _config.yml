@@ -18,7 +18,7 @@ permalink: pretty
 sass:
   sass_dir: assets/stylesheets
 
-googleAnalyticsCode: UA-XXXXX-X
+googleAnalyticsCode: UA-157621-1
 
 # packages versions
 
