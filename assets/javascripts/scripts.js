@@ -1,4 +1,4 @@
-// target='_blank' on url that are not par of the current domain
+// target='_blank' on url that are not part of the current domain
 // see http://stackoverflow.com/questions/4425198/markdown-target-blank
 (function() {
     var links = document.links;
