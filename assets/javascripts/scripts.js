@@ -1,5 +1,7 @@
-// target='_blank' on url that are not part of the current domain
-// see http://stackoverflow.com/questions/4425198/markdown-target-blank
+/* ========================================================================
+target='_blank' on url that are not part of the current domain
+see http://stackoverflow.com/questions/4425198/markdown-target-blank
+* ======================================================================== */
 (function() {
     var links = document.links;
     for (var i = 0, linksLength = links.length; i < linksLength; i++) {
@@ -10,10 +12,10 @@
     }
 })();
 
-
-
-// Google Analytics: change your site's ID in config.yml
-
+/* ========================================================================
+ Google Analytics from html5BP: change your site's ID in config.yml
+ Modified by djacquel to use jekyll config to set ID
+* ======================================================================== */
 if(googleAnalyticsCode != 'NOCODE'){
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
