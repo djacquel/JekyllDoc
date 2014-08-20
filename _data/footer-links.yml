@@ -1,0 +1,21 @@
+
+- url:  http://www.ubuntu.com/
+  name: Unbuntu
+
+- url:  https://www.ruby-lang.org/
+  name: Ruby
+
+- url:  http://jekyllrb.com/
+  name: Jekyll
+
+- url:  https://github.com/twbs/bootstrap
+  name: Twitter Bootstrap
+
+- url:  https://github.com/twbs/bootstrap-sass
+  name: Twitter Bootstrap Sass port
+
+- url:  http://sass-lang.com/
+  name: Sass
+
+- url:  https://github.com/
+  name: Github
