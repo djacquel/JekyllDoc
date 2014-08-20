@@ -5,3 +5,10 @@ url: "http://test.dev"
 
 googleAnalyticsCode: NOCODE
 
+sass:
+  style: :nested
+
+  cache: false # not working
+  read_cache: false # not working
+
+  css_location: css # not working

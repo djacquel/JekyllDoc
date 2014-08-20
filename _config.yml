@@ -7,28 +7,40 @@ description: "This is my personal Jekyll testbed."
 baseurl: "/JekyllDoc"
 url: "http://pygmeeweb.com"
 
-twitter_username: pygmeeweb
-github_username:  djacquel
-
-# Build settings
-markdown: kramdown
-permalink: pretty
-
-kramdown:
-  input: GFM
-
-sass:
-  sass_dir: assets/stylesheets
-
-googleAnalyticsCode: UA-157621-1
-
-# packages versions
-
-twb-sass-version: 2.3.0
-
 exclude:
   - assets/stylesheets/variables.scss
   - assets/stylesheets/bootstrap
   - readme.md
 
 include: []
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+kramdown:
+  # use Github Flavored Markdown
+  input: GFM
+
+sass:
+
+  # loading path from site root
+  # default to _sass
+  sass_dir: assets/stylesheets
+
+  # style : nested (default), compact, compressed, expanded
+  #         :nested, :compact, :compressed, :expanded also works
+  # see http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  # on a typical twitter bootstrap stats are :
+  # nested 138,7kB, compact 129,1kB, expanded 135,9 kB, compressed 122,4 kB
+  style: compressed
+
+twitter_username: pygmeeweb
+github_username:  djacquel
+
+googleAnalyticsCode: UA-157621-1
+
+# packages versions
+twb-sass-version: 2.3.0
+
+
