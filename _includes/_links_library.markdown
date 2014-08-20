@@ -1,5 +1,5 @@
 {% comment %} LINKS LIBRARY
-This is a link library to centralize blog's links
+This is a link library to centralize blog's links for markdown files
 
 We can reference inner links and outer links.
 Any changes made to an url can be easily reflected here
