@@ -1,0 +1,16 @@
+---
+layout: page
+title: About
+permalink: /about/
+menu: main
+weight: 90
+---
+
+<p>This site is my own testbed for Jekyll.</p>
+<p>{{ site.title }} is made with :</p>
+<ul class="list-inline noIcon">
+    {% for link in site.data.footer-links %}
+        <li><a class="btn btn-sm btn-info" href="{{ link.url }}"  role="button">{{ link.name }}</a></li>
+    {% endfor %}
+</ul>
+
