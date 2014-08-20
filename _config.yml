@@ -8,7 +8,6 @@ baseurl: "/JekyllDoc"
 url: "http://pygmeeweb.com"
 
 exclude:
-  - assets/stylesheets/variables.scss
   - assets/stylesheets/bootstrap
   - readme.md
 
