@@ -4,8 +4,8 @@ email: david.jacquel@gmail.com
 
 description: "This is my personal Jekyll testbed."
 
-baseurl: "/JekyllDoc"
-url: "http://pygmeeweb.com"
+baseurl: ""
+url: "http://jekyll.pygmeeweb.com"
 
 exclude:
   - assets/stylesheets/variables.scss
