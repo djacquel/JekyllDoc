@@ -18,7 +18,7 @@ include: []
 markdown: kramdown
 permalink: pretty
 
-#kramdown:
+kramdown:
   # use Github Flavored Markdown
   input: GFM
   # do not replace newlines by <br>s
