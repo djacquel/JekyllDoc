@@ -14,3 +14,12 @@ weight: 90
     {% endfor %}
 </ul>
 
+{% if site.github %}
+
+<p>Current rubygems version in use are :</p>
+<ul class="listToMargin">
+{% for gem in site.github.versions %}
+<li class="label label-info">{{ gem[0] }} {{ gem[1] }}</li>
+{% endfor %}
+</ul>
+{% endif %}
