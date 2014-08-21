@@ -4,12 +4,14 @@ title:  "Jeckyll's configuration"
 date:   2014-08-01
 ---
 
+
+
 {% include _links_library.markdown %}
 
 ## Base configuration for prod and dev
 
-If you want to install Jekyll, see documentation on
-[Jekyll website][jekyll], and code
+If you want to install Jekyll, see documentation
+on [Jekyll website][jekyll], and code
 on [Jekyll's GitHub repo][jekyll-gh].
 
 Configuration differs between development and production platforms.
