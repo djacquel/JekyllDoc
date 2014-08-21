@@ -1,0 +1,155 @@
+---
+layout: default
+menu: main
+title: Test
+weight: 30
+---
+
+
+<h1>Testing Jekyll</h1>
+    <dl class="dl-horizontal">
+        <dt>Test number</dt><dd class="testNumber"></dd>
+        <dt>Passed test</dt><dd class="passedTests"></dd>
+        <dt>Failed test</dt><dd class="failedTests"></dd>
+    </dl>
+
+<div id="testingJekyll">
+    <h2>jekyll</h2>
+      <h3>filters</h3>
+        <h4>specific</h4>
+
+    <div class="panel-group" id="accordion1"><!-- jekyll / filters / specific / number_of_words +++++++++++++++++++++ -->
+        <h5>number_of_words <small><a href="http://jekyllrb.com/docs/templates/">Documentation</a></small></h5>
+
+            <div class="panel panel-default test">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion1" href="#collapse1" class="collapsed">
+                            Test #1
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <code>
+                    {% highlight liquid %}{% raw %}
+                    {{ "three word sentence" | number_of_words }}
+                    {% endraw %}{% endhighlight %}
+                    </code>
+                    <dl class="dl-horizontal">
+                        <dt>Expected</dt>
+                        <dd class="result">3</dd>
+                        <dt>Result</dt>
+                        <dd class="expected">{{ "three word sentence" | number_of_words }}</dd>
+                    </dl>
+                </div>
+            </div>
+        <!-- end tests loop -->
+    </div>
+    <!-- end tag --><h2>liquid</h2>
+      <h3>filters</h3>
+        <h4>math</h4>
+
+    <div class="panel-group" id="accordion2"><!-- liquid / filters / math / divided_by +++++++++++++++++++++ -->
+        <h5>divided_by <small><a href="http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#divided_by">Documentation</a></small></h5>
+
+            <div class="panel panel-default test">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2" class="collapsed">
+                            Test #2
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <code>
+                    {% highlight liquid %}{% raw %}
+                    {{ 100 | divided_by: 25 }}
+                    {% endraw %}{% endhighlight %}
+                    </code>
+                    <dl class="dl-horizontal">
+                        <dt>Expected</dt>
+                        <dd class="result">4</dd>
+                        <dt>Result</dt>
+                        <dd class="expected">{{ 100 | divided_by: 25 }}</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="panel panel-default test">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse3" class="collapsed">
+                            Test #3
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <code>
+                    {% highlight liquid %}{% raw %}
+                    {{ 100 | divided_by: 42 }}
+                    {% endraw %}{% endhighlight %}
+                    </code>
+                    <dl class="dl-horizontal">
+                        <dt>Expected</dt>
+                        <dd class="result">2.380952381</dd>
+                        <dt>Result</dt>
+                        <dd class="expected">{{ 100 | divided_by: 42 }}</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="panel panel-default test">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse4" class="collapsed">
+                            Test #4
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                    <code>
+                    {% highlight liquid %}{% raw %}
+                    {{ 100 | divided_by: 21 }}
+                    {% endraw %}{% endhighlight %}
+                    </code>
+                    <dl class="dl-horizontal">
+                        <dt>Expected</dt>
+                        <dd class="result">4.761904762</dd>
+                        <dt>Result</dt>
+                        <dd class="expected">{{ 100 | divided_by: 21 }}</dd>
+                    </dl>
+                </div>
+            </div>
+        <!-- end tests loop -->
+    </div>
+    <!-- end tag --><h4>string</h4>
+
+    <div class="panel-group" id="accordion3"><!-- liquid / filters / string / handleize +++++++++++++++++++++ -->
+        <h5>handleize <small><a href="http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#handle">Documentation</a></small></h5>
+
+            <div class="panel panel-default test">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion3" href="#collapse5" class="collapsed">
+                            Test #5
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse">
+                    <code>
+                    {% highlight liquid %}{% raw %}
+                    {{ '100% M & Ms!!!' | handleize }}
+                    {% endraw %}{% endhighlight %}
+                    </code>
+                    <dl class="dl-horizontal">
+                        <dt>Expected</dt>
+                        <dd class="result">100-m-ms</dd>
+                        <dt>Result</dt>
+                        <dd class="expected">{{ '100% M & Ms!!!' | handleize }}</dd>
+                    </dl>
+                </div>
+            </div>
+        <!-- end tests loop -->
+    </div>
+    <!-- end tag -->
+</div>
