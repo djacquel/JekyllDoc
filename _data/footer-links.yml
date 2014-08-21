@@ -19,3 +19,6 @@
 
 - url:  https://github.com/
   name: Github
+
+- url: https://pages.github.com/
+  name: Github Pages
