@@ -8,7 +8,9 @@ date:   2014-08-01
 
 ## Base configuration for prod and dev
 
-If you want to install Jekyll, see documentation on [Jekyll website][jekyll], and code on [Jekyll's GitHub repo][jekyll-gh].
+If you want to install Jekyll, see documentation on
+[Jekyll website][jekyll], and code
+on [Jekyll's GitHub repo][jekyll-gh].
 
 Configuration differs between development and production platforms.
 We then need to have two different config files.
