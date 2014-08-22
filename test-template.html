@@ -1,50 +1,50 @@
 ---
-layout: simple
-menu: main
-title: Tests TPL
-weight: 30
 ---
 
-​<textarea id="txtArea" rows="30" cols="80" style="width:100%; height:100%;">
-<h1>Testing Jekyll</h1>
-    <dl class="dl-horizontal">
-        <dt>Test number</dt><dd class="testNumber"></dd>
-        <dt>Passed test</dt><dd class="passedTests"></dd>
-        <dt>Failed test</dt><dd class="failedTests"></dd>
-    </dl>
+​<h1>Testing Jekyll</h1>
+<dl class="dl-horizontal">
+    <dt>Test number</dt><dd class="testNumber"></dd>
+    <dt>Passed test</dt><dd class="passedTests"></dd>
+    <dt>Failed test</dt><dd class="failedTests"></dd>
+</dl>
 
-<div id="testingJekyll">{% assign tagCount = 0 %}{% assign testCount = 0 %}
-    {% for owner in site.data.tests %}<h2>{{ owner[0] }}</h2>
-      {% for rub in owner[1] %}<h3>{{ rub[0] }}</h3>
-        {% for cat in rub[1] %}<h4>{{ cat[0] }}</h4>
-{% for tag in cat[1] %}{% assign tagCount = tagCount | plus: 1 %}
-    <div class="panel-group" id="accordion{{ tagCount }}"><!-- {{ owner[0] }} / {{ rub[0] }} / {{ cat[0] }} / {{ tag[0] }} +++++++++++++++++++++ -->
-        <h5>{{ tag[0] }}{% if tag[1].doc %} <small><a href="{{ tag[1].doc }}">Documentation</a></small>{% endif %}</h5>
-        {% for test in tag[1].tests %}{% assign testCount = testCount | plus: 1 %}
+<div id="testingJekyll">
+{% assign panelCount = 0 %}
+{% for owner in site.data.tests %}<h2>{{ owner[0] }}</h2>
+  {% for rub in owner[1] %}
+    {% for cat in rub[1] %}
+      {% for tag in cat[1] %}
+        <div class="panel-group" id="accordion{{ panelCount }}">
+        <!-- {{ owner[0] }} / {{ rub[0] }} / {{ cat[0] }} / {{ tag[0] }} +++++++++++++++++++++ -->
+          {% assign testCount = 0 %}
+          {% for test in tag[1].tests %}{% assign testCount = testCount | plus: 1 %}
+            {% assign panelCount = panelCount | plus: 1 %}
             <div class="panel panel-default test">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion{{ tagCount }}" href="#collapse{{ testCount }}" class="collapsed">
-                            Test #{{ testCount }}
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapse{{ testCount }}" class="panel-collapse collapse">
-                    <code>{% comment %}Highlighted code needs to be on the left with no space or tab before{% endcomment %}
-                    {{ "{% highlight liquid " }}%}{{ "{% raw " }}%}
-                    {{ test.tag }}
-                    {{ "{% endraw " }}%}{{ "{% endhighlight " }}%}
-                    </code>
-                    <dl class="dl-horizontal">
-                        <dt>Expected</dt>
-                        <dd class="result">{{ test.expected }}</dd>
-                        <dt>Result</dt>
-                        <dd class="expected">{{ test.tag }}</dd>
-                    </dl>
-                </div>
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion{{ panelCount }}" href="#collapse{{ panelCount }}" class="testTitle collapsed">
+                    {{ owner[0] }}::{{ rub[0] }}::{{ cat[0] }}::{{ tag[0] }} Test #{{ testCount }}
+                  </a> - <small><a class="text-right" href="{{ tag[1].doc }}">Documentation</a></small>
+                </h4>
+              </div>
+              <div id="collapse{{ panelCount }}" class="panel-collapse collapse">
+                <code>{% comment %}Highlighted code needs to be on the left with no space or tab before{% endcomment %}
+                {{ "{% highlight liquid " }}%}{{ "{% raw " }}%}
+                {{ test.tag }}
+                {{ "{% endraw " }}%}{{ "{% endhighlight " }}%}
+                </code>
+                <dl class="dl-horizontal">
+                    <dt>Expected</dt>
+                    <dd class="result">{{ test.expected }}</dd>
+                    <dt>Result</dt>
+                    <dd class="expected">{{ test.tag }}</dd>
+                </dl>
+              </div>
             </div>
-        {% endfor %}<!-- end tests loop -->
-    </div>
-    {% endfor %}<!-- end tag -->{% endfor %}{% endfor %}{% endfor %}
+          {% endfor %}<!-- end tests loop -->
+        </div>
+      {% endfor %}<!-- end tag -->
+    {% endfor %}
+  {% endfor %}
+{% endfor %}
 </div>
-</textarea>
