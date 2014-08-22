@@ -1,0 +1,59 @@
+
+documentation:
+
+  jkl:
+    url:  http://jekyllrb.com/
+    name: Jekyll
+
+  jklapi:
+    url: http://rdoc.info/github/jekyll/jekyll/file/README.markdown
+    name: Jekyll API
+
+
+  sojekyll:
+    url: http://stackoverflow.com/questions/tagged/jekyll
+    name: Jekyll on Stack Overflow
+
+
+  liquid:
+    url: http://docs.shopify.com/themes/liquid-documentation/basics
+    name: Liquid documentation
+
+  liquidprogrammers:
+    url: https://github.com/Shopify/liquid/wiki/Liquid-for-Programmers
+    name: Liquid for programmers
+
+  liquiddesign:
+    url: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
+    name: Liquid for designers
+
+
+  twb:
+    url:  https://github.com/twbs/bootstrap
+    name: Twitter Bootstrap
+
+  twbsass:
+    url:  https://github.com/twbs/bootstrap-sass
+    name: Twitter Bootstrap Sass port
+
+  sass:
+    url:  http://sass-lang.com/
+    name: Sass
+
+  ghpages:
+    url:  https://pages.github.com/
+    name: Github Pages
+
+various:
+
+  ruby:
+    url:  https://www.ruby-lang.org/
+    name: Ruby
+
+  lcodethw:
+    url: http://ruby.learncodethehardway.org/
+    name: Learn Ruby The Hard Way
+
+  ub:
+    url:  http://www.ubuntu.com/
+    name: Unbuntu
