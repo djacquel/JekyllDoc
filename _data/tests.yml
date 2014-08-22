@@ -4,6 +4,28 @@
 
 liquid:
 
+    operators:
+
+      basic:
+
+        equals:
+          doc: 'http://docs.shopify.com/themes/liquid-documentation/basics/operators#basic-operators'
+
+          tests:
+            - tag: '{% if 1 == 1 %}equals{%else %}not equals{% endif %}'
+              expected: "equals"
+
+            - tag: '{% if "1" == 1 %}equals{%else %}not equals{% endif %}'
+              expected: "not equals"
+
+            - tag: '{% if "abc" == "abc" %}equals{%else %}not equals{% endif %}'
+              expected: "equals"
+
+            - tag: '{% if "abc" == "ab" %}equals{%else %}not equals{% endif %}'
+              expected: "not equals"
+
+
+
     filters:
 
         math:
@@ -24,8 +46,8 @@ liquid:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#handle'
 
                 tests:
-                  - tag: "{{ '100% M & Ms!!!' | handleize }}"
-                    expected: '100-m-ms'
+                  - tag: '{{ "100% M & Ms!!!" | handleize }}'
+                    expected: "100-m-ms"
 
 
 jekyll:
