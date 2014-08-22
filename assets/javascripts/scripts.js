@@ -67,7 +67,7 @@ function testingJekyll(){
     }
 
     $(elem).removeClass('.panel-default').addClass( resultClass );
-    $(elem).find('.panel-title a').append( resultText );
+    $(elem).find('.panel-title a.testTitle').append( resultText );
 
   });
 
