@@ -1,0 +1,7 @@
+---
+layout: nil
+title: json
+menu: main
+weight: 23
+---
+{{ site.data.footer-links | jsonify }}
