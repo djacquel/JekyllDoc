@@ -8,8 +8,15 @@ googleAnalyticsCode: NOCODE
 sass:
   style: :nested
 
+
+
+
+
+
+
 # testing github pages variables
 # see https://help.github.com/articles/repository-metadata-on-github-pages
+# this hash is only available in dev env
 github:
     versions:
         jekyll: 1.5.1
@@ -25,3 +32,7 @@ github:
         jekyll-sitemap: 0.2.0
         github-pages: 18
         ruby: 2.1.1
+
+
+
+
