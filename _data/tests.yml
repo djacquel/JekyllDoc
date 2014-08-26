@@ -4,41 +4,157 @@
 
 liquid:
 
-    operators:
+    basics:
 
-      basic:
+        operators:
 
-        equals:
-          doc: 'http://docs.shopify.com/themes/liquid-documentation/basics/operators#basic-operators'
+            contains:
 
-          tests:
-            - tag: '{% if 1 == 1 %}equals{%else %}not equals{% endif %}'
-              expected: "equals"
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/basics/operators#contains'
 
-            - tag: '{% if "1" == 1 %}equals{%else %}not equals{% endif %}'
-              expected: "not equals"
+                tests:
+                  - tag: '{% if "Hello world !" contains "Hello" %}contains{% else %}not found{% endif %}'
+                    expected: contains
+                  - tag: '{% if "Hello world !" contains "Jelyll" %}contains{% else %}not found{% endif %}'
+                    expected: not found
 
-            - tag: '{% if "abc" == "abc" %}equals{%else %}not equals{% endif %}'
-              expected: "equals"
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{% if my_array contains "one" %}contains{% else %}not found{% endif %}'
+                    expected: contains
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{% if my_array contains "four" %}contains{% else %}not found{% endif %}'
+                    expected: not found
 
-            - tag: '{% if "abc" == "ab" %}equals{%else %}not equals{% endif %}'
-              expected: "not equals"
+        types:
 
+            array:
 
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/basics/types#arrays'
+
+                tests:
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{% for num in my_array %}{{ num }}{% endfor %}'
+                    expected: onetwothree
+
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array[0] }}{{ my_array[1] }}{{ my_array[2] }}'
+                    expected: onetwothree
+
+            emptydrop:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/basics/types#empty-drop'
+
+                tests:
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{% assign el = my_array[3] %}{% if el.empty? %}emptydrop{% else %}not emptydrop{% endif %}'
+                    expected: emptydrop
 
     filters:
+
+        array:
+
+            join:
+
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#join'
+
+                tests:
+
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" | join: ", " %}{{ my_array }}'
+                    expected: 'one, two, three'
+
+            first:
+
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#first'
+
+                tests:
+
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | first }}'
+                    expected: 'one'
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array.first }}'
+                    comment: 'first can be used in dot notation, in cases where it needs to be used inside a tag.'
+                    expected: 'one'
+
+                  - tag: '{% assign my_string = "one" %}{{ my_string | first }}'
+                    comment: Using first on a string returns the first character in the string.
+                    expected: 'o'
+                  - tag: '{% assign my_string = "one" %}{{ my_string.first }}'
+                    comment: 'first can be used in dot notation, in cases where it needs to be used inside a tag.'
+                    expected: 'o'
+
+            last:
+
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#last'
+
+                tests:
+
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | last }}'
+                    expected: 'three'
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array.last }}'
+                    comment: 'last can be used in dot notation, in cases where it needs to be used inside a tag.'
+                    expected: 'three'
+
+                  - tag: '{% assign my_string = "one" %}{{ my_string | last }}'
+                    comment: 'Using last on a string returns the last character in the string.'
+                    expected: 'e'
+                  - tag: '{% assign my_string = "one" %}{{ my_string.last }}'
+                    comment: 'last can be used in dot notation, in cases where it needs to be used inside a tag.'
+                    expected: 'e'
+
+            map:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#map'
+
+                tests:
+                  - tag: '{% assign mapping = site.tests.multi-dim-array | map: "arrayone" %}{{ mapping }}'
+                    expected: 'onetwothree'
+
+            size:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#size'
+
+                tests:
+                  - tag: '{{ "this is a 30 character string!" | size }}'
+                    expected: 30
+
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | size }}'
+                    expected: 3
+
+            sort:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#sort'
+
+                tests:
+                  - tag: '{% assign posts = site.tests.posts | sort: "weight" %}{% for post in posts %}{{ post.weight }}{% endfor %}'
+                    expected: '102030'
+
+                  - tag: '{% assign posts = site.tests.posts | sort: "title" %}{% for post in posts %}{{ post.title }}{% endfor %}'
+                    expected: 'ABa'
+
+        html:
+
+            img_tag:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/html-filters#img_tag'
+                tests:
+                  - tag: "{{ 'smirking_gnome.gif' | asset_url | img_tag  | escape }}"
+                    comment: 'Not in Liquid gem. Plugin at https://github.com/robwierzbowski/jekyll-image-tag'
+                    expected: TO BE EDITED {% assign img = '<img src="smirking_gnome.gif">' %}{{ img | escape }}
+
 
         math:
             divided_by:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#divided_by'
 
                 tests:
-                  - tag: '{{ 100 | divided_by: 25 }}'
-                    expected: 4
-                  - tag: '{{ 100 | divided_by: 42 }}'
-                    expected: 2.380952381
-                  - tag: '{{ 100 | divided_by: 21 }}'
-                    expected: 4.761904762
+                  - tag: '{{ 6 | divided_by: 3 }}'
+                    expected: 2
+
+                  - tag: '{{ 3 | divided_by: 5 }}'
+                    expected: 0.6
+                  - tag: '{{ "3" | divided_by: 5 }}'
+                    expected: 0.6
+                  - tag: '{{ "3.0" | divided_by: 5 }}'
+                    expected: 0.6
+                  - tag: '{{ 3.0 | divided_by: 5 }}'
+                    expected: 0.6
+
+
+            round:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#round'
+
+              tests:
+                - tag: '{{ 4.5612 | round: 2.0 }}'
+                  expected: 4.56
 
         string:
             handleize:
