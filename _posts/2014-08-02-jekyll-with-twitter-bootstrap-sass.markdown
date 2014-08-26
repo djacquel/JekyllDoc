@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "Jekyll with Twitter Bootstrap Sass"
+title:  Jekyll with Twitter Bootstrap Sass
 date:   2014-08-02
+test: testval
 ---
 
 {% include _links_library.markdown %}

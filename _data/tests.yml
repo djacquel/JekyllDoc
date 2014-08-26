@@ -1,7 +1,4 @@
 
-
-
-
 liquid:
 
     basics:
@@ -9,9 +6,7 @@ liquid:
         operators:
 
             contains:
-
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/basics/operators#contains'
-
                 tests:
                   - tag: '{% if "Hello world !" contains "Hello" %}contains{% else %}not found{% endif %}'
                     expected: contains
@@ -26,9 +21,7 @@ liquid:
         types:
 
             array:
-
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/basics/types#arrays'
-
                 tests:
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{% for num in my_array %}{{ num }}{% endfor %}'
                     expected: onetwothree
@@ -36,32 +29,73 @@ liquid:
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array[0] }}{{ my_array[1] }}{{ my_array[2] }}'
                     expected: onetwothree
 
-            emptydrop:
-                doc: 'http://docs.shopify.com/themes/liquid-documentation/basics/types#empty-drop'
+    objects:
 
-                tests:
-                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{% assign el = my_array[3] %}{% if el.empty? %}emptydrop{% else %}not emptydrop{% endif %}'
-                    expected: emptydrop
+        forloop:
+
+            forloop.first:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/objects/for-loops#first'
+              tests:
+                - tag: '{% for num in site.tests.multi-dim-array.arrayone %}{% if forloop.first == true %}{{ num }}{% else %}-{% endif %}{% endfor %}'
+                  expected: 'one--'
+
+            forloop.index:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/objects/for-loops#index'
+              tests:
+                - tag: '{% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.index }}{% endfor %}'
+                  expected: '123'
+
+            forloop.index0:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/objects/for-loops#index0'
+              tests:
+                - tag: '{% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.index0 }}{% endfor %}'
+                  expected: '012'
+
+            forloop.last:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/objects/for-loops#last'
+              tests:
+                - tag: '{% for num in site.tests.multi-dim-array.arrayone %}{% if forloop.last == true %}{{ num }}{% else %}-{% endif %}{% endfor %}'
+                  expected: '--three'
+
+            forloop.rindex:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/objects/for-loops#rindex'
+              tests:
+                - tag: '{% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.rindex }}{% endfor %}'
+                  expected: '321'
+
+            forloop.rindex0:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/objects/for-loops#rindex0'
+              tests:
+                - tag: '{% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.rindex0 }}{% endfor %}'
+                  expected: '210'
+
+            forloop.length:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/objects/for-loops#length'
+              tests:
+                - tag: '{% for num in site.tests.multi-dim-array.arrayone %}{% capture length %}{{ forloop.length }}{% endcapture %}{% endfor %}{{ length }}'
+                  expected: 3
+
+        paginate:
+
+            paginate.current_page:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/objects/paginate#paginate-current_page'
+              tests:
+                - tag: '@TODO'
+                  expected: 'TODO'
+
 
     filters:
 
         array:
-
             join:
-
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#join'
-
                 tests:
-
                   - tag: '{% assign my_array = "one|two|three" | split: "|" | join: ", " %}{{ my_array }}'
                     expected: 'one, two, three'
 
             first:
-
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#first'
-
                 tests:
-
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | first }}'
                     expected: 'one'
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array.first }}'
@@ -76,11 +110,8 @@ liquid:
                     expected: 'o'
 
             last:
-
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#last'
-
                 tests:
-
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | last }}'
                     expected: 'three'
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array.last }}'
@@ -96,14 +127,12 @@ liquid:
 
             map:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#map'
-
                 tests:
                   - tag: '{% assign mapping = site.tests.multi-dim-array | map: "arrayone" %}{{ mapping }}'
                     expected: 'onetwothree'
 
             size:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#size'
-
                 tests:
                   - tag: '{{ "this is a 30 character string!" | size }}'
                     expected: 30
@@ -113,13 +142,14 @@ liquid:
 
             sort:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#sort'
-
                 tests:
                   - tag: '{% assign posts = site.tests.posts | sort: "weight" %}{% for post in posts %}{{ post.weight }}{% endfor %}'
+                    comment: this filter is overriden by Jekyll sort
                     expected: '102030'
 
                   - tag: '{% assign posts = site.tests.posts | sort: "title" %}{% for post in posts %}{{ post.title }}{% endfor %}'
-                    expected: 'ABa'
+                    comment: this filter is overriden by Jekyll sort
+                    expected: 'ABab'
 
         html:
 
@@ -130,8 +160,29 @@ liquid:
                     comment: 'Not in Liquid gem. Plugin at https://github.com/robwierzbowski/jekyll-image-tag'
                     expected: TO BE EDITED {% assign img = '<img src="smirking_gnome.gif">' %}{{ img | escape }}
 
+            script_tag:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/html-filters#script_tag'
+                tests:
+                  - tag: "{{ 'shop.js' | asset_url | script_tag | escape }}"
+                    comment: 'Not in Liquid gem.'
+                    expected: TO BE EDITED {% assign scrpt = '<script src="shop.js">' %}{{ scrpt | escape }}
+
+            stylesheet_tag:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/html-filters#stylesheet_tag'
+                tests:
+                  - tag: "{{ 'shop.css' | asset_url | stylesheet_tag }}"
+                    comment: 'Not in Liquid gem.'
+                    expected: TO BE EDITED {% assign css = '<link href="shop.css">' %}{{ css | escape }}
 
         math:
+
+            ceil:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#ceil'
+                tests:
+                  - tag: '{{ 4.6 | ceil }}'
+                    comment: liquid 3.0
+                    expected: 5
+
             divided_by:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#divided_by'
 
@@ -140,38 +191,353 @@ liquid:
                     expected: 2
 
                   - tag: '{{ 3 | divided_by: 5 }}'
-                    expected: 0.6
+                    expected: 0
                   - tag: '{{ "3" | divided_by: 5 }}'
-                    expected: 0.6
+                    expected: 0
+
                   - tag: '{{ "3.0" | divided_by: 5 }}'
                     expected: 0.6
                   - tag: '{{ 3.0 | divided_by: 5 }}'
                     expected: 0.6
 
+            floor:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#floor'
+                tests:
+                  - tag: '{{ 4.6 | floor }}'
+                    comment: liquid 3.0
+                    expected: 4
+
+            minus:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#minus'
+                tests:
+                  - tag: '{{ 16 | minus: 15 }}'
+                    expected: 1
+                  - tag: '{{ "16" | minus: 15 }}'
+                    expected: 1
+                  - tag: '{{ 16 | minus: "15" }}'
+                    expected: 1
+
+                  - tag: '{{ 1 | minus: 0.5 }}'
+                    expected: 0.5
+                  - tag: '{{ 1 | minus: "0.5" }}'
+                    expected: 0.5
+                  - tag: '{{ "1" | minus: 0.5 }}'
+                    expected: 0.5
+
+            plus:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#plus'
+                tests:
+                  - tag: '{{ 16 | plus: 15 }}'
+                    expected: 31
+                  - tag: '{{ "16" | plus: 15 }}'
+                    expected: 31
+                  - tag: '{{ 16 | plus: "15" }}'
+                    expected: 31
+
+                  - tag: '{{ 1.6 | plus: 1.5 }}'
+                    expected: 3.1
+                  - tag: '{{ "1.6" | plus: 1.5 }}'
+                    expected: 3.1
+                  - tag: '{{ 1.6 | plus: "1.5" }}'
+                    expected: 3.1
 
             round:
               doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#round'
 
               tests:
-                - tag: '{{ 4.5612 | round: 2.0 }}'
-                  expected: 4.56
+                - tag: '{{ 4.6 | round }}'
+                  comment: liquid 3.0
+                  expected: 5
+                - tag: '{{ 4.3 | round }}'
+                  comment: liquid 3.0
+                  expected: 4
+                - tag: '{{ 4.5612 | round: 2 }}'
+                  comment: liquid 3.0
+                  expected: 4,56
+
+            times:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#times'
+              tests:
+                - tag: '{{ 100 | times: 2 }}'
+                  expected: 200
+                - tag: '{{ 10.12 | times: 10 }}'
+                  expected: 101.2
+                - tag: '{{ 10 | times: 10.12 }}'
+                  expected: 101.2
+
+            modulo:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/math-filters#modulo'
+              tests:
+                - tag: '{{ 12 | modulo: 5 }}'
+                  expected: 2
+                - tag: '{{ "12" | modulo: 5 }}'
+                  expected: 2
+                - tag: '{{ 12 | modulo: "5" }}'
+                  expected: 2
+                - tag: '{{ 1.2 | modulo: 5 }}'
+                  expected: 1.2
+                - tag: '{{ 15.5 | modulo: 5.1 }}'
+                  expected: 0.2
 
         string:
+
+            append:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#append'
+              tests:
+               - tag: "{{ 'sales' | append: '.jpg' }}"
+                 expected: 'sales.jpg'
+
+            camelcase:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#camelcase'
+              comment: Nothing about camelcase in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+              tests:
+               - tag: "{{ 'coming-soon' | camelcase }}"
+                 expected: 'ComingSoon'
+
+            capitalize:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#capitalize'
+              tests:
+               - tag: "{{ 'capitalize me' | capitalize }}"
+                 expected: 'Capitalize me'
+
+            downcase:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#downcase'
+              tests:
+               - tag: "{{ 'UPPERCASE' | downcase }}"
+                 expected: 'uppercase'
+
+            escape:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#escape'
+              tests:
+               - tag: '{{ "<p>test</p>" | escape }}'
+                 expected: '&lt;p&gt;test&lt;/p&gt;'
+
             handleize:
-
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#handle'
-
                 tests:
                   - tag: '{{ "100% M & Ms!!!" | handleize }}'
                     expected: "100-m-ms"
+
+            md5:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#md5'
+              tests:
+               - tag: '{{ "toto" | md5 }}'
+                 comment: Nothing about md5 in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+                 expected: 'f71dbe52628a3f83a77ab494817525c6'
+
+
+            newline_to_br:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#newline_to_br'
+              tests:
+               - tag: '{{ site.tests.string-with-newlines | newline_to_br | escape }}'
+                 expected: |
+                        One&lt;br /&gt;
+                        Two&lt;br /&gt;
+                        Three&lt;br /&gt;
+
+            pluralize:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#pluralize'
+              tests:
+               - tag: "{{ site.tests.array-with-one-element.size | pluralize: 'item', 'items' }}"
+                 comment: Nothing about pluralize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a> - <a href="https://github.com/bdesham/pluralize">Plugin here</a>
+                 expected: 'item'
+               - tag: "{{ site.tests.multi-dim-array.size | pluralize: 'item', 'items' }}"
+                 comment: Nothing about pluralize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a> - <a href="https://github.com/bdesham/pluralize">Plugin here</a>
+                 expected: 'items'
+
+            prepend:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#prepend'
+              tests:
+               - tag: "{{ 'sale' | prepend: 'Made a great ' }}"
+                 expected: 'Made a great sale'
+
+            remove:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#remove'
+              tests:
+               - tag: '{{ "Hello, world. Goodbye, world." | remove: "world" }}'
+                 expected: 'Hello, . Goodbye, .'
+
+            remove_first:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#remove_first'
+              tests:
+               - tag: '{{ "Hello, world. Goodbye, world." | remove_first: "world" }}'
+                 expected: 'Hello, . Goodbye, world.'
+
+            replace:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#replace'
+              tests:
+               - tag: "{{ 'Hello World !' | replace: 'World', 'Jekyll' }}"
+                 expected: 'Hello Jekyll !'
+
+            replace_first:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#replace_first'
+              tests:
+               - tag: "{{ 'Awesome Awesome Shoes' | replace_first: 'Awesome', 'Mega' }}"
+                 expected: 'Mega Awesome Shoes'
+
+            slice:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#slice'
+              tests:
+               - tag: '{{ "hello" | slice: 2 }}'
+                 comment: Nothing about pluralize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+                 expected: 'e'
+               - tag: '{{ "hello" | slice: 1, 3 }}'
+                 comment: Nothing about pluralize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+                 expected: 'ell'
+               - tag: '{{ "hello" | slice: -3, 2  }}'
+                 comment: Nothing about pluralize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+                 expected: 'el'
+
+            split:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#split'
+              tests:
+               - tag: '{% assign words = "Uses cheat codes, calls the game boring." | split: " " %}{% for word in words %}{{ word }}{% endfor %}'
+                 expected: 'Usescheatcodes,callsthegameboring.'
+
+            strip:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#strip'
+              tests:
+               - tag: "|{{'   too many spaces      '|strip}}|"
+                 comment: liquid 3.0
+                 expected: '|too many spaces|'
+
+            lstrip:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#lstrip'
+              tests:
+               - tag: "|{{ '   too many spaces           ' | lstrip }}|"
+                 comment: liquid 3.0
+                 expected: '|too many spaces           |'
+
+            rstrip:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#rstrip'
+              tests:
+               - tag: "|{{ '   too many spaces           ' | rstrip }}|"
+                 comment: liquid 3.0
+                 expected: '|   too many spaces|'
+
+            strip_html:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#strip_html'
+              tests:
+               - tag: '{{ "<h1>Hello</h1> World" | strip_html }}'
+                 expected: 'Hello World'
+
+            strip_newlines:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#strip_newlines'
+              tests:
+               - tag: '{{ site.tests.string-with-newlines | strip_newlines }}'
+                 expected: 'OneTwoThree'
+
+            truncate:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#truncate'
+              tests:
+               - tag: '{{ "The cat came back the very next day" | truncate: 10 }}'
+                 expected: 'The cat...'
+
+            truncatewords:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#truncatewords'
+              tests:
+               - tag: '{{ "The cat came back the very next day" | truncatewords: 4 }}'
+                 expected: 'The cat came back...'
+
+            uniq:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#uniq'
+              tests:
+               - tag: "{% assign fruits = 'orange apple banana apple orange' %}{{ fruits | split: ' ' | uniq | join: ' ' }}"
+                 comment: Nothing about uniq in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+                 expected: 'orange apple banana'
+
+            upcase:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#upcase'
+              tests:
+               - tag: "{{ 'i want this to be uppercase' | upcase }}"
+                 expected: 'I WANT THIS TO BE UPPERCASE'
+
+            url_escape:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#url_escape'
+              tests:
+               - tag: '{{ "<hello> & <shopify>" | url_escape }}'
+                 comment: Nothing about url_escape in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+                 expected: '%3Chello%3E%20&%20%3Cshopify%3E'
+
+            url_param_escape:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#url_param_escape'
+              tests:
+               - tag: '{{ "<hello> & <shopify>" | url_param_escape }}'
+                 comment: Nothing about url_param_escape in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+                 expected: '%3Chello%3E%20%26%20%3Cshopify%3E'
+
 
 
 jekyll:
     filters:
         specific:
+
+            date_to_xmlschema:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{{ "Fri, 07 Nov 2008 00:00:00 +0100" | date_to_xmlschema }}'
+                    expected: '2008-11-07T00:00:00+01:00'
+
+            date_to_rfc822:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{{ "2008-11-07T00:00:00+01:00" | date_to_rfc822 }}'
+                    expected: 'Fri, 07 Nov 2008 00:00:00 +0100'
+
+            date_to_string:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{{ "Fri, 07 Nov 2008 00:00:00 +0100" | date_to_string }}'
+                    expected: '07 Nov 2008'
+
+            date_to_long_string:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{{ "Fri, 07 Nov 2008 00:00:00 +0100" | date_to_long_string }}'
+                    expected: '07 November 2008'
+
+            where:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{% capture post %}{{ site.tests.posts | where:"weight", 10 }}{% endcapture %}{{ post }}'
+                    comment: this filter need better testing
+                    expected: '{"title"=>"a", "content"=>"a title body", "weight"=>10}'
+
             number_of_words:
-                doc: 'http://jekyllrb.com/docs/templates/'
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
 
                 tests:
                   - tag: '{{ "three word sentence" | number_of_words }}'
                     expected: 3
+
+            array_to_sentence_string:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | array_to_sentence_string }}'
+                    expected: 'one, two, and three'
+
+            markdownify:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{{ "**strong** and *em*" | markdownify | escape }}'
+                    comment: this test is passing. problem in the expected tag that adds a newline
+                    expected: '{{ "<p><strong>strong</strong> and <em>em</em></p>" | escape }}'
+
+            jsonify:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{{ site.tests.posts[0] | jsonify }}'
+                    expected: '{"title":"A","content":"A title body","weight":30}'
+
+            sort:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{% assign posts = site.tests.posts | sort: "weight" %}{% for post in posts %}{{ post.title }}{% endfor %}'
+                    expected: 'baBA'
+
+                  - tag: '{% assign posts = site.tests.posts | sort: "weight", "last" %}{% for post in posts %}{{ post.title }}{% endfor %}'
+                    expected: 'aBAb'
+
+                  - tag: '{% assign posts = site.tests.posts | sort: "weight", "first" %}{% for post in posts %}{{ post.title }}{% endfor %}'
+                    expected: 'baBA'
+
