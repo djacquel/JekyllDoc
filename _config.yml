@@ -46,3 +46,28 @@ googleAnalyticsCode: UA-157621-1
 twb-sass-version: 2.3.0
 
 
+
+# variables for tests page
+tests:
+
+  multi-dim-array:
+    arrayone:
+      - one
+      - two
+      - three
+    arraytwo: [four, five, six]
+
+  posts:
+    - title: A
+      body:  A title body
+      weight: 30
+
+    - title: a
+      body: a title body
+      weight: 10
+
+    - title: B
+      body: B title body
+      weight: 20
+
+
