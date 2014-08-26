@@ -33,6 +33,7 @@
                 {{ test.tag }}
                 {{ "{% endraw " }}%}{{ "{% endhighlight " }}%}
                 </code>
+                {% if test.comment %}<p>Comment : {{ test.comment }}</p>{% endif %}
                 <dl class="dl-horizontal">
                     <dt>Expected</dt>
                     <dd class="result">{{ test.expected }}</dd>
