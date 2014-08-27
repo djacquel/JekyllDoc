@@ -98,6 +98,13 @@ function testingJekyll(){
 
   $.each( tests, function( id, elem ) {
 
+    $(elem).on('show.bs.collapse', function () {
+            $(this).find('.testTitle .glyphicon').removeClass('glyphicon-eye-open').addClass('glyphicon-eye-close');
+          })
+          .on('hide.bs.collapse', function () {
+            $(this).find('.testTitle .glyphicon').removeClass('glyphicon-eye-close').addClass('glyphicon-eye-open');
+          })
+
     testid   = $(elem).data('testid');
     expected = $(elem).find('.expected').html();
     result   = $(elem).find('.result').html();
@@ -107,9 +114,6 @@ function testingJekyll(){
       expected = nl2space( expected );
       result   = nl2space( result );
     }
-
-    console.log('expected=' + expected);
-    console.log('result  =' + result);
 
     if( expected != result ){
       resultClass = "danger";
@@ -129,12 +133,23 @@ function testingJekyll(){
     if( testFailing === true ){
       $("#testLight-" + testid).siblings( "a" ).addClass( resultClass );
     }
+
+    $("#link-" + testid).click(function() {
+
+      var testLights = $(this).siblings('.testLight')
+
+      testLights.each(function(){
+        var testid = $( this ).data('testid');
+        var target = $( '#panel-' + testid );
+        $( target ).find('.collapse').collapse('show');
+      });
+
+    });
+
   });
 
   $('.passedTests').html( passedTests );
   $('.failedTests').html( testsNumber - passedTests );
-
-
 }
 
 

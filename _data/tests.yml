@@ -211,12 +211,19 @@ liquid:
 
                   - tag: '{{ 3 | divided_by: 5 }}'
                     expected: 0
+                    comment: integers division returns integer
                   - tag: '{{ "3" | divided_by: 5 }}'
                     expected: 0
+                    comment: integers division returns integer
 
                   - tag: '{{ "3.0" | divided_by: 5 }}'
                     expected: 0.6
                   - tag: '{{ 3.0 | divided_by: 5 }}'
+                    expected: 0.6
+
+                  - tag: '{{ "3" | divided_by: 5.0 }}'
+                    expected: 0.6
+                  - tag: '{{ 3 | divided_by: "5.0" }}'
                     expected: 0.6
 
             floor:
@@ -308,9 +315,9 @@ liquid:
 
             camelcase:
               doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#camelcase'
-              comment: Nothing about camelcase in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
               tests:
                - tag: "{{ 'coming-soon' | camelcase }}"
+                 comment: Nothing about camelcase in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
                  expected: 'ComingSoon'
 
             capitalize:

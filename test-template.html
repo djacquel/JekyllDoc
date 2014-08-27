@@ -29,7 +29,7 @@
                   {% capture link %}<a href="#panel-{{ panelCount }}" class="" id="link-{{ panelCount }}">{{ owner[0] }}::{{ tag[0] }}</a>{% endcapture %}
                 {% endif %}
 
-                {% capture testLight %}<span id="testLight-{{ panelCount }}" class="testLight"></span>{% endcapture %}
+                {% capture testLight %}<span id="testLight-{{ panelCount }}" data-testid="{{ panelCount }}" class="testLight"></span>{% endcapture %}
 
                 {% assign testLights = testLights | append: testLight %}
               {% endfor %}<!-- end tests loop -->
@@ -52,11 +52,15 @@
             {% assign panelCount = panelCount | plus: 1 %}
             <div class="panel panel-default test" id="panel-{{ panelCount }}" data-testid="{{ panelCount }}" >
               <div class="panel-heading">
-                <h4 class="panel-title">
+                <p class="clearfix">
                   <a data-toggle="collapse" data-parent="#accordion{{ panelCount }}" href="#collapse{{ panelCount }}" class="testTitle collapsed">
-                    {{ owner[0] }}::{{ rub[0] }}::{{ cat[0] }}::{{ tag[0] }} Test #{{ testCount }}
-                  </a> - <small><a class="text-right" href="{{ tag[1].doc }}">Documentation</a> - <a href="#testingJekyll" class="text-right">^ TOP ^</a></small>
-                </h4>
+                    {{ owner[0] }}::{{ tag[0] }} Test #{{ testCount }} <span class="glyphicon glyphicon-eye-open"></span>
+                  </a>
+                  <small>
+                    <a href="{{ tag[1].doc }}">{{ owner[0] }} Documentation</a>
+                    - <a href="#testingJekyll" class="text-right">Back to top</a>
+                  </small>
+                </p>
               </div>
               <div id="collapse{{ panelCount }}" class="panel-collapse collapse">
                 <code>{% comment %}Highlighted code needs to be on the left with no space or tab before{% endcomment %}
@@ -64,7 +68,6 @@
                 {{ test.tag }}
                 {{ "{% endraw " }}%}{{ "{% endhighlight " }}%}
                 </code>
-                {% if test.comment %}<p>Comment : {{ test.comment }}</p>{% endif %}
                 <dl class="dl-horizontal">
                     <dt>Expected</dt>
                     <dd class="expected">{{ test.expected }}</dd>
@@ -73,6 +76,10 @@
                     {% if test.nl2space == true %}
                     <dt>nl2space</dt>
                     <dd class="nl2space">{{ test.nl2space }}</dd>
+                    {% endif %}
+                    {% if test.comment %}
+                    <dt>Comment</dt>
+                    <dd>{{ test.comment }}</dd>
                     {% endif %}
                 </dl>
               </div>
