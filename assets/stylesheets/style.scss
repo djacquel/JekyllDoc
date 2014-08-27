@@ -58,24 +58,6 @@ permalink: /css/styles.css
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Styles from Jekyll css */
 /* ----------------------------------------------------------*/
 .site-footer {
@@ -167,6 +149,61 @@ permalink: /css/styles.css
    Test styling
    ========================================================================== */
 
-#testingJekyll pre, #testingJekyll p{
-  margin: 0 10px;
+#testingJekyll {
+
+  pre, p{
+    margin: 0 10px;
+  }
+
+  h1, h2, h3{
+    margin: 0 0 5px;
+  }
+
+  ul, li{
+    list-style: none;
+    padding: 0;
+  }
+
+  #toc{
+    -moz-column-count: 4;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 4;
+    -webkit-column-gap : 10px;
+    -moz-column-rule-color:  #ccc;
+    -moz-column-rule-style:  solid;
+    -moz-column-rule-width:  1px;
+    -webkit-column-rule-color:  #ccc;
+    -webkit-column-rule-style: solid ;
+    -webkit-column-rule-width:  1px;
+
+    .danger{
+        background: $brand-danger;
+        color: yellow;
+    }
+
+    .testLight{
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 4px;
+        border: 1px solid darken($brand-success, 13.5%);
+        background: $brand-success;
+    }
+    .testLight.danger{
+        border: 1px solid darken($brand-danger, 13.5%);
+        background: $brand-danger;
+    }
+
+  }
+
+
+
+
 }
+
+
+
+
+
+
+
