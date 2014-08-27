@@ -11,6 +11,9 @@ exclude:
   - assets/stylesheets/variables.scss
   - assets/stylesheets/bootstrap
   - readme.md
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
 
 include: []
 
