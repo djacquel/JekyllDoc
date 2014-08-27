@@ -36,43 +36,106 @@ if(googleAnalyticsCode != 'NOCODE'){
  Testing Jekyll
 * ======================================================================== */
 
+function nl2space( textToStrip ){
+
+  var separator   = "§§§";
+  var lines       = [];
+  var linesLength = 0
+
+  textToStrip = textToStrip.replace( /(\r\n|\n|\r)/gm, separator );
+  textToStrip = textToStrip.replace( /\>[\n\t\r ]+\</g, "><");
+  textToStrip = trim( textToStrip, separator );
+  lines       = textToStrip.split( separator )
+
+  linesLength = lines.length;
+
+  for( var i=0; i < linesLength; i++ ){
+    lines[i] = lines[i].trim();
+  }
+
+  textToStrip = lines.join(' ');
+
+  return textToStrip;
+}
+
+var trim = (function () {
+    "use strict";
+
+    function escapeRegex(string) {
+        return string.replace(/[\[\](){}?*+\^$\\.|\-]/g, "\\$&");
+    }
+
+    return function trim(str, characters, flags) {
+        flags = flags || "g";
+        if (typeof str !== "string" || typeof characters !== "string" || typeof flags !== "string") {
+            throw new TypeError("argument must be string");
+        }
+
+        if (!/^[gi]*$/.test(flags)) {
+            throw new TypeError("Invalid flags supplied '" + flags.match(new RegExp("[^gi]*")) + "'");
+        }
+
+        characters = escapeRegex(characters);
+
+        return str.replace(new RegExp("^[" + characters + "]+|[" + characters + "]+$", flags), '');
+    };
+}());
+
 function testingJekyll(){
 
-  console.log('testingJekyll()');
-
-  var tests       = $( ".test" );
-  var testsNumber = tests.length;
-  var passedTests = 0;
-  var expected    = '';
-  var result      = '';
-  var resultClass = '';
-  var resultText  = '';
+  var tests         = $( ".test" );
+  var testsNumber   = tests.length;
+  var passedTests   = 0;
+  var expected      = '';
+  var result        = '';
+  var testid        = '';
+  var nl2spaceflag  = '';
+  var resultClass   = '';
+  var resultText    = '';
+  var testFailing   = false;
 
   $('.testNumber').html( testsNumber );
 
   $.each( tests, function( id, elem ) {
 
-    code     = $(elem).find('code').text();
+    testid   = $(elem).data('testid');
     expected = $(elem).find('.expected').html();
     result   = $(elem).find('.result').html();
+    nl2spaceflag = $(elem).find('.nl2space').html();
+
+    if( nl2spaceflag == 'true' ){
+      expected = nl2space( expected );
+      result   = nl2space( result );
+    }
+
+    console.log('expected=' + expected);
+    console.log('result  =' + result);
 
     if( expected != result ){
-      resultClass = "panel-danger";
+      resultClass = "danger";
       resultText  = "FAILED";
+      testFailing = false;
       $(elem).find('.collapse').collapse('show');
     }else{
-      resultClass = "panel-success";
+      resultClass = "success";
       resultText  = "PASSED";
+      testFailing = false;
       passedTests++;
     }
 
-    $(elem).removeClass('.panel-default').addClass( resultClass );
+    $(elem).removeClass('.panel-default').addClass( "panel-" + resultClass );
     $(elem).find('.panel-title a.testTitle').append( resultText );
+    $("#link-" + testid).addClass( resultClass );
+    $("#testLight-" + testid).addClass( resultClass );
 
+    if( testFailing == true ){
+      $("#testLight-" + testid).addClass( resultClass );
+    }
   });
 
   $('.passedTests').html( passedTests );
   $('.failedTests').html( testsNumber - passedTests );
+
 
 }
 
