@@ -49,6 +49,47 @@ liquid:
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array[0] }}{{ my_array[1] }}{{ my_array[2] }}'
                     expected: onetwothree
 
+
+    tags:
+
+        control-flow:
+            if:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#if'
+              tests:
+                - tag: '{% if 1 == 1 %}OK{% endif %}'
+                  expected: 'OK'
+                - tag: '{% if 1 == "1" %}OK{% endif %}'
+                  expected: ''
+
+            elsif-else:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#elsif-else'
+              tests:
+                - tag: '{% assign name="toto" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}'
+                  expected: 'toto'
+                - tag: '{% assign name="titi" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}'
+                  expected: 'titi'
+                - tag: '{% assign name="yoyo" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}'
+                  expected: 'nobody'
+
+            case-when:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#case-when'
+              tests:
+                - tag: "{% assign handle = 'cake' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}"
+                  expected: 'This is a cake'
+                - tag: "{% assign handle = 'cookie' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}"
+                  expected: 'This is a cookie'
+                - tag: "{% assign handle = 'bacon' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}"
+                  expected: 'This is not a cake nor a cookie'
+
+            unless:
+              doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#unless'
+              tests:
+                - tag: "{% assign name='toto' %}{% unless name == 'titi' %}Not titi{% endunless %}"
+                  expected: 'Not titi'
+                - tag: "{% assign name='titi' %}{% unless name == 'titi' %}Not titi{% endunless %}"
+                  expected: ''
+
+
     objects:
 
         forloop:
@@ -95,13 +136,13 @@ liquid:
                 - tag: '{% for num in site.tests.multi-dim-array.arrayone %}{% capture length %}{{ forloop.length }}{% endcapture %}{% endfor %}{{ length }}'
                   expected: 3
 
-        paginate:
-
-            paginate.current_page:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/objects/paginate#paginate-current_page'
-              tests:
-                - tag: '@TODO'
-                  expected: 'TODO'
+#        paginate:
+#
+#            paginate.current_page:
+#              doc: 'http://docs.shopify.com/themes/liquid-documentation/objects/paginate#paginate-current_page'
+#              tests:
+#                - tag: '@TODO'
+#                  expected: 'TODO'
 
     filters:
 
@@ -115,29 +156,30 @@ liquid:
             first:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#first'
                 tests:
-                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | first }}'
+                  - tag: '{{ "one|two|three" | split: "|" | first }}'
                     expected: 'one'
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array.first }}'
                     comment: 'first can be used in dot notation, in cases where it needs to be used inside a tag.'
                     expected: 'one'
 
-                  - tag: '{% assign my_string = "one" %}{{ my_string | first }}'
+                  - tag: '{{ "one" | first }}'
                     comment: Using first on a string returns the first character in the string.
                     expected: 'o'
                   - tag: '{% assign my_string = "one" %}{{ my_string.first }}'
                     comment: 'first can be used in dot notation, in cases where it needs to be used inside a tag.'
                     expected: 'o'
 
+
             last:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#last'
                 tests:
-                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | last }}'
+                  - tag: '{{ "one|two|three" | split: "|" | last }}'
                     expected: 'three'
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array.last }}'
                     comment: 'last can be used in dot notation, in cases where it needs to be used inside a tag.'
                     expected: 'three'
 
-                  - tag: '{% assign my_string = "one" %}{{ my_string | last }}'
+                  - tag: '{{ "one" | last }}'
                     comment: 'Using last on a string returns the last character in the string.'
                     expected: 'e'
                   - tag: '{% assign my_string = "one" %}{{ my_string.last }}'
@@ -156,7 +198,7 @@ liquid:
                   - tag: '{{ "this is a 30 character string!" | size }}'
                     expected: 30
 
-                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | size }}'
+                  - tag: '{{ "one|two|three" | split: "|" | size }}'
                     expected: 3
 
             sort:
@@ -342,7 +384,7 @@ liquid:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#handle'
                 tests:
                   - tag: '{{ "100% M & Ms!!!" | handleize }}'
-                    comment: Nothing about md5 in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a> - <a href="https://github.com/mozodev/cckcon3/blob/gh-pages/_plugins/handelize.rb">plugin here</a>
+                    comment: Nothing about handelize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a> - <a href="https://github.com/mozodev/cckcon3/blob/gh-pages/_plugins/handelize.rb">plugin here</a>
                     expected: "100-m-ms"
 
             md5:
@@ -548,6 +590,7 @@ jekyll:
                   - tag: '{{ "**strong** and *em*" | markdownify | escape }}'
                     comment: this test is passing. problem in the expected tag that adds a newline
                     expected: '{{ "<p><strong>strong</strong> and <em>em</em></p>" | escape }}'
+                    nl2space: true
 
             jsonify:
                 doc: 'http://jekyllrb.com/docs/templates/#filters'
@@ -569,7 +612,7 @@ jekyll:
 
 kramdown:
 
-    parameters:
+    config:
 
         gfm:
 
