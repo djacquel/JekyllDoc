@@ -335,6 +335,7 @@ liquid:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#handle'
                 tests:
                   - tag: '{{ "100% M & Ms!!!" | handleize }}'
+                    comment: Nothing about md5 in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a> - <a href="https://github.com/mozodev/cckcon3/blob/gh-pages/_plugins/handelize.rb">plugin here</a>
                     expected: "100-m-ms"
 
             md5:
