@@ -12,32 +12,14 @@
     </small>
   </h1>
   <div id="toc">
-    <ul>
-    {% assign panelCount = 0 %}
-    {% for owner in site.data.tests %}
-      {% for rub in owner[1] %}
-        {% for cat in rub[1] %}
-          {% for tag in cat[1] %}
-              {% assign testCount = 0 %}
-              {% assign testLights = '' %}
-              {% for test in tag[1].tests %}
+    <ul>{% assign panelCount = 0 %}{% for owner in site.data.tests %}<li><strong>{{ owner[0] }}</strong></li>{% for rub in owner[1] %}{% for cat in rub[1] %}
 
-                {% assign testCount = testCount | plus: 1 %}
-                {% assign panelCount = panelCount | plus: 1 %}
 
-                {% if forloop.first == true %}
-                  {% capture link %}<a href="#panel-{{ panelCount }}" class="" id="link-{{ panelCount }}">{{ owner[0] }}::{{ tag[0] }}</a>{% endcapture %}
-                {% endif %}
 
-                {% capture testLight %}<span id="testLight-{{ panelCount }}" data-testid="{{ panelCount }}" class="testLight"></span>{% endcapture %}
-
-                {% assign testLights = testLights | append: testLight %}
-              {% endfor %}<!-- end tests loop -->
-              <li>{{ link }} {{ testLights }}</li>
-          {% endfor %}<!-- end tag -->
-        {% endfor %}
-      {% endfor %}
-    {% endfor %}
+    {% for tag in cat[1] %}{% assign testCount = 0 %}{% assign testLights = '' %}
+{% for test in tag[1].tests %}{% assign testCount = testCount | plus: 1 %}{% assign panelCount = panelCount | plus: 1 %}{% if forloop.first == true %}{% capture link %}<a href="#panel-{{ panelCount }}" class="" id="link-{{ panelCount }}">{{ rub[0] }}:{{ cat[0] }}:{{ tag[0] }}</a>{% endcapture %}{% endif %}{% capture testLight %}<span id="testLight-{{ panelCount }}" data-testid="{{ panelCount }}" class="testLight"></span>{% endcapture %}{% assign testLights = testLights | append: testLight %}{% endfor %}
+<li>{{ link }} {{ testLights }}</li>{% endfor %}{% endfor %}{% endfor %}{% endfor %}
+    </ul>
   </div>
 
 {% assign panelCount = 0 %}
@@ -53,9 +35,12 @@
             <div class="panel panel-default test" id="panel-{{ panelCount }}" data-testid="{{ panelCount }}" >
               <div class="panel-heading">
                 <p class="clearfix">
-                  <a data-toggle="collapse" data-parent="#accordion{{ panelCount }}" href="#collapse{{ panelCount }}" class="testTitle collapsed">
-                    {{ owner[0] }}::{{ tag[0] }} Test #{{ testCount }} <span class="glyphicon glyphicon-eye-open"></span>
+                  <span class="testTitle">
+                  {{ owner[0] }}:{{ cat[0] }}:{{ tag[0] }}
+                   <a data-toggle="collapse" data-parent="#accordion{{ panelCount }}" href="#collapse{{ panelCount }}" class="testTitle collapsed">
+                   Test #{{ testCount }} <span class="glyphicon glyphicon-eye-open"></span>
                   </a>
+                  </span>
                   <small>
                     <a href="{{ tag[1].doc }}">{{ owner[0] }} Documentation</a>
                     - <a href="#testingJekyll" class="text-right">Back to top</a>
@@ -69,26 +54,12 @@
                 {{ "{% endraw " }}%}{{ "{% endhighlight " }}%}
                 </code>
                 <dl class="dl-horizontal">
-                    <dt>Expected</dt>
-                    <dd class="expected">{{ test.expected }}</dd>
-                    <dt>Result</dt>
-                    <dd class="result">{{ test.tag }}</dd>
-                    {% if test.nl2space == true %}
-                    <dt>nl2space</dt>
-                    <dd class="nl2space">{{ test.nl2space }}</dd>
-                    {% endif %}
-                    {% if test.comment %}
-                    <dt>Comment</dt>
-                    <dd>{{ test.comment }}</dd>
-                    {% endif %}
+                    <dt>Expected</dt><dd class="expected">{{ test.expected }}</dd>
+                    <dt>Result</dt><dd class="result">{{ test.tag }}</dd>
+                    {% if test.nl2space == true %}<dt>nl2space</dt><dd class="nl2space">{{ test.nl2space }}</dd>{% endif %}
+                    {% if test.comment %}<dt>Comment</dt><dd>{{ test.comment }}</dd>{% endif %}
                 </dl>
               </div>
             </div>
-          {% endfor %}<!-- end tests loop -->
-        </div>
-      {% endfor %}<!-- end tag -->
-    {% endfor %}
-  {% endfor %}
-{% endfor %}
-</div>
+          {% endfor %}</div>{% endfor %}{% endfor %}{% endfor %}{% endfor %}
 </div>

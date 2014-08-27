@@ -49,7 +49,6 @@ liquid:
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array[0] }}{{ my_array[1] }}{{ my_array[2] }}'
                     expected: onetwothree
 
-
     tags:
 
         control-flow:
@@ -88,6 +87,11 @@ liquid:
                   expected: 'Not titi'
                 - tag: "{% assign name='titi' %}{% unless name == 'titi' %}Not titi{% endunless %}"
                   expected: ''
+
+
+
+# don't forget {% break %}
+
 
 
     objects:
@@ -212,29 +216,6 @@ liquid:
                     comment: this filter is overriden by Jekyll sort
                     expected: 'ABab'
 
-        html:
-
-            img_tag:
-                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/html-filters#img_tag'
-                tests:
-                  - tag: "{{ 'smirking_gnome.gif' | asset_url | img_tag  | escape }}"
-                    comment: 'Not in Liquid gem. Plugin at https://github.com/robwierzbowski/jekyll-image-tag'
-                    expected: TO BE EDITED {% assign img = '<img src="smirking_gnome.gif">' %}{{ img | escape }}
-
-            script_tag:
-                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/html-filters#script_tag'
-                tests:
-                  - tag: "{{ 'shop.js' | asset_url | script_tag | escape }}"
-                    comment: 'Not in Liquid gem.'
-                    expected: TO BE EDITED {% assign scrpt = '<script src="shop.js">' %}{{ scrpt | escape }}
-
-            stylesheet_tag:
-                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/html-filters#stylesheet_tag'
-                tests:
-                  - tag: "{{ 'shop.css' | asset_url | stylesheet_tag }}"
-                    comment: 'Not in Liquid gem.'
-                    expected: TO BE EDITED {% assign css = '<link href="shop.css">' %}{{ css | escape }}
-
         math:
 
             ceil:
@@ -355,13 +336,6 @@ liquid:
                - tag: "{{ 'sales' | append: '.jpg' }}"
                  expected: 'sales.jpg'
 
-            camelcase:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#camelcase'
-              tests:
-               - tag: "{{ 'coming-soon' | camelcase }}"
-                 comment: Nothing about camelcase in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
-                 expected: 'ComingSoon'
-
             capitalize:
               doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#capitalize'
               tests:
@@ -380,21 +354,6 @@ liquid:
                - tag: '{{ "<p>test</p>" | escape }}'
                  expected: '&lt;p&gt;test&lt;/p&gt;'
 
-            handleize:
-                doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#handle'
-                tests:
-                  - tag: '{{ "100% M & Ms!!!" | handleize }}'
-                    comment: Nothing about handelize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a> - <a href="https://github.com/mozodev/cckcon3/blob/gh-pages/_plugins/handelize.rb">plugin here</a>
-                    expected: "100-m-ms"
-
-            md5:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#md5'
-              tests:
-               - tag: '{{ "toto" | md5 }}'
-                 comment: Nothing about md5 in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
-                 expected: 'f71dbe52628a3f83a77ab494817525c6'
-
-
             newline_to_br:
               doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#newline_to_br'
               tests:
@@ -403,16 +362,6 @@ liquid:
                         One&lt;br /&gt;
                         Two&lt;br /&gt;
                         Three&lt;br /&gt;
-
-            pluralize:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#pluralize'
-              tests:
-               - tag: "{{ site.tests.array-with-one-element.size | pluralize: 'item', 'items' }}"
-                 comment: Nothing about pluralize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a> - <a href="https://github.com/bdesham/pluralize">Plugin here</a>
-                 expected: 'item'
-               - tag: "{{ site.tests.multi-dim-array.size | pluralize: 'item', 'items' }}"
-                 comment: Nothing about pluralize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a> - <a href="https://github.com/bdesham/pluralize">Plugin here</a>
-                 expected: 'items'
 
             prepend:
               doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#prepend'
@@ -448,13 +397,13 @@ liquid:
               doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#slice'
               tests:
                - tag: '{{ "hello" | slice: 2 }}'
-                 comment: Nothing about pluralize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+                 comment: liquid 3.0
                  expected: 'e'
                - tag: '{{ "hello" | slice: 1, 3 }}'
-                 comment: Nothing about pluralize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+                 comment: liquid 3.0
                  expected: 'ell'
                - tag: '{{ "hello" | slice: -3, 2  }}'
-                 comment: Nothing about pluralize in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
+                 comment: liquid 3.0
                  expected: 'el'
 
             split:
@@ -508,32 +457,11 @@ liquid:
                - tag: '{{ "The cat came back the very next day" | truncatewords: 4 }}'
                  expected: 'The cat came back...'
 
-            uniq:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#uniq'
-              tests:
-               - tag: "{% assign fruits = 'orange apple banana apple orange' %}{{ fruits | split: ' ' | uniq | join: ' ' }}"
-                 comment: Nothing about uniq in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
-                 expected: 'orange apple banana'
-
             upcase:
               doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#upcase'
               tests:
                - tag: "{{ 'i want this to be uppercase' | upcase }}"
                  expected: 'I WANT THIS TO BE UPPERCASE'
-
-            url_escape:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#url_escape'
-              tests:
-               - tag: '{{ "<hello> & <shopify>" | url_escape }}'
-                 comment: Nothing about url_escape in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
-                 expected: '%3Chello%3E%20&%20%3Cshopify%3E'
-
-            url_param_escape:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/string-filters#url_param_escape'
-              tests:
-               - tag: '{{ "<hello> & <shopify>" | url_param_escape }}'
-                 comment: Nothing about url_param_escape in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
-                 expected: '%3Chello%3E%20%26%20%3Cshopify%3E'
 
 jekyll:
 
