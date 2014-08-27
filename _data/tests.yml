@@ -1,6 +1,4 @@
 
-
-
 ## Tests datas for Jekyll and tags (Liquid, Kramdown, ...)
 
 #level 1
@@ -24,7 +22,6 @@ liquid:
     basics:
 
         operators:
-
             contains:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/basics/operators#contains'
                 tests:
@@ -39,7 +36,6 @@ liquid:
                     expected: not found
 
         types:
-
             array:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/basics/types#arrays'
                 tests:
@@ -53,40 +49,40 @@ liquid:
 
         control-flow:
             if:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#if'
-              tests:
-                - tag: '{% if 1 == 1 %}OK{% endif %}'
-                  expected: 'OK'
-                - tag: '{% if 1 == "1" %}OK{% endif %}'
-                  expected: ''
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#if'
+                tests:
+                  - tag: '{% if 1 == 1 %}OK{% endif %}'
+                    expected: 'OK'
+                  - tag: '{% if 1 == "1" %}OK{% endif %}'
+                    expected: ''
 
             elsif-else:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#elsif-else'
-              tests:
-                - tag: '{% assign name="toto" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}'
-                  expected: 'toto'
-                - tag: '{% assign name="titi" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}'
-                  expected: 'titi'
-                - tag: '{% assign name="yoyo" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}'
-                  expected: 'nobody'
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#elsif-else'
+                tests:
+                  - tag: '{% assign name="toto" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}'
+                    expected: 'toto'
+                  - tag: '{% assign name="titi" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}'
+                    expected: 'titi'
+                  - tag: '{% assign name="yoyo" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}'
+                    expected: 'nobody'
 
             case-when:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#case-when'
-              tests:
-                - tag: "{% assign handle = 'cake' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}"
-                  expected: 'This is a cake'
-                - tag: "{% assign handle = 'cookie' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}"
-                  expected: 'This is a cookie'
-                - tag: "{% assign handle = 'bacon' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}"
-                  expected: 'This is not a cake nor a cookie'
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#case-when'
+                tests:
+                  - tag: "{% assign handle = 'cake' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}"
+                    expected: 'This is a cake'
+                  - tag: "{% assign handle = 'cookie' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}"
+                    expected: 'This is a cookie'
+                  - tag: "{% assign handle = 'bacon' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}"
+                    expected: 'This is not a cake nor a cookie'
 
             unless:
-              doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#unless'
-              tests:
-                - tag: "{% assign name='toto' %}{% unless name == 'titi' %}Not titi{% endunless %}"
-                  expected: 'Not titi'
-                - tag: "{% assign name='titi' %}{% unless name == 'titi' %}Not titi{% endunless %}"
-                  expected: ''
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#unless'
+                tests:
+                  - tag: "{% assign name='toto' %}{% unless name == 'titi' %}Not titi{% endunless %}"
+                    expected: 'Not titi'
+                  - tag: "{% assign name='titi' %}{% unless name == 'titi' %}Not titi{% endunless %}"
+                    expected: ''
 
 
 
