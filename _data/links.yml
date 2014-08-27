@@ -28,6 +28,7 @@ documentation:
     name: Liquid for designers
 
 
+
   twb:
     url:  https://github.com/twbs/bootstrap
     name: Twitter Bootstrap
@@ -43,6 +44,15 @@ documentation:
   ghpages:
     url:  https://pages.github.com/
     name: Github Pages
+
+  gfm:
+    url:  https://pages.github.com/
+    name: Github Flavored Mardown
+
+
+  mkdncompare:
+    url: http://ajoz.github.io/2014/06/29/i-want-my-github-flavored-markdown/
+    name: I want my Github Flavored Markdown
 
 various:
 
