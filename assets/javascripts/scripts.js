@@ -128,7 +128,7 @@ function testingJekyll(){
     }
 
     $(elem).removeClass('.panel-default').addClass( "panel-" + resultClass );
-    $(elem).find('.panel-title a.testTitle').append( resultText );
+    $(elem).find('.panel-title .testTitle a').append( resultText );
     $("#testLight-" + testid).addClass( resultClass );
     if( testFailing === true ){
       $("#testLight-" + testid).siblings( "a" ).addClass( resultClass );
