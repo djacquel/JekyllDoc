@@ -55,6 +55,17 @@ permalink: /css/styles.css
 
 .listToMargin{
   padding-left: 0;
+    -moz-column-count: 4;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 4;
+    -webkit-column-gap : 10px;
+    -moz-column-rule-color:  #ccc;
+    -moz-column-rule-style:  solid;
+    -moz-column-rule-width:  1px;
+    -webkit-column-rule-color:  #ccc;
+    -webkit-column-rule-style: solid ;
+    -webkit-column-rule-width:  1px;
+
 }
 
 
@@ -67,7 +78,7 @@ permalink: /css/styles.css
 }
 .site-footer ul { list-style: none; }
 
-.site-footer li,
+.site-footer .social li,
 .site-footer p {
   font-size: 15px;
   letter-spacing: -.3px;

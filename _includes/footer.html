@@ -1,6 +1,6 @@
-<footer class="site-footer raw">
+<footer class="site-footer raw" id="footer">
   <div class="col-md-6">
-    <ul class="list-inline noIcon">
+    <ul class="list-inline noIcon social">
       {% if site.github_username %}<li>Github :
         <a href="https://github.com/{{ site.github_username }}">
           <span>{{ site.github_username }}</span>
@@ -14,8 +14,16 @@
     </ul>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-12">
     <p class="text-right">Jekyll version {{ jekyll.version }}</p>
+    {% if site.github %}
+<p>Current rubygems version in use at Github Pages are :</p>
+<ul class="listToMargin">
+{% for gem in site.github.versions %}
+<li class="label label-info">{{ gem[0] }} {{ gem[1] }}</li>
+{% endfor %}
+</ul>
+{% endif %}
   </div>
 </footer>
 
