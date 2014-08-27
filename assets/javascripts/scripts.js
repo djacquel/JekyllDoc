@@ -114,7 +114,7 @@ function testingJekyll(){
     if( expected != result ){
       resultClass = "danger";
       resultText  = "FAILED";
-      testFailing = false;
+      testFailing = true;
       $(elem).find('.collapse').collapse('show');
     }else{
       resultClass = "success";
@@ -125,11 +125,9 @@ function testingJekyll(){
 
     $(elem).removeClass('.panel-default').addClass( "panel-" + resultClass );
     $(elem).find('.panel-title a.testTitle').append( resultText );
-    $("#link-" + testid).addClass( resultClass );
     $("#testLight-" + testid).addClass( resultClass );
-
-    if( testFailing == true ){
-      $("#testLight-" + testid).addClass( resultClass );
+    if( testFailing === true ){
+      $("#testLight-" + testid).siblings( "a" ).addClass( resultClass );
     }
   });
 
