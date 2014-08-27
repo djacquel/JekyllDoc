@@ -1,4 +1,24 @@
 
+
+
+## Tests datas for Jekyll and tags (Liquid, Kramdown, ...)
+
+#level 1
+#    level 2
+#        level 3
+#            item:
+
+#                doc: 'url' Optional
+#                comment: comment about test result, link to other doc or bug report ...
+#                tests:
+#
+#                  - tag: '{{ anytag }}'
+
+#                    expected: 'expected html response'
+
+#                    nl2space: true # if true replace newlines to spaces (+trim) before comparing strings
+                                    # default to false
+
 liquid:
 
     basics:
@@ -82,7 +102,6 @@ liquid:
               tests:
                 - tag: '@TODO'
                   expected: 'TODO'
-
 
     filters:
 
@@ -466,9 +485,8 @@ liquid:
                  comment: Nothing about url_param_escape in <a href="https://github.com/Shopify/liquid/">Liquid code !?</a>
                  expected: '%3Chello%3E%20%26%20%3Cshopify%3E'
 
-
-
 jekyll:
+
     filters:
         specific:
 
@@ -541,3 +559,66 @@ jekyll:
                   - tag: '{% assign posts = site.tests.posts | sort: "weight", "first" %}{% for post in posts %}{{ post.title }}{% endfor %}'
                     expected: 'baBA'
 
+kramdown:
+
+    parameters:
+
+        gfm:
+
+            multiple-underscores-in-words:
+
+              doc: 'http://jekyllrb.com/docs/configuration/#kramdown'
+              tests:
+                - tag: '{{ "perform_complicated_task"  | markdownify }}'
+                  comment: <a href="https://help.github.com/articles/github-flavored-markdown#multiple-underscores-in-words">Multiple underscores in words</a>
+                  expected: |
+                     <p>perform_complicated_task</p>
+
+            url-autolinking:
+              doc: 'http://jekyllrb.com/docs/configuration/#kramdown'
+              tests:
+                - tag: '{{ "http://example.com"  | markdownify }}'
+                  comment: <a href="https://help.github.com/articles/github-flavored-markdown#url-autolinking">URL autolinking</a>
+                  expected: '{{ <a href=>http://example.com</a> | escape }}'
+
+            strikethrough:
+              doc: 'http://jekyllrb.com/docs/configuration/#kramdown'
+              tests:
+                - tag: '{{ "~~Mistaken text.~~"  | markdownify }}'
+                  comment: <a href="https://help.github.com/articles/github-flavored-markdown#strikethrough">Strikethrough</a>
+                  expected: '{{ "<del>Mistaken text.</del>" | escape }}'
+
+            fenced-code-blocks:
+              doc: 'http://jekyllrb.com/docs/configuration/#kramdown'
+              tests:
+                - tag: >
+                    {% capture tag %}
+                    ```
+                    function test() {
+                      console.log("toto");
+                    }
+                    ```
+                    {% endcapture %}
+                    {{ tag  | markdownify }}
+
+                  comment: <a href="https://help.github.com/articles/github-flavored-markdown#fenced-code-blocks">Fenced code blocks</a>
+                  expected: '<p><code>function test() { console.log("toto"); }</code></p>'
+                  nl2space: true
+
+
+            syntax-highlighting:
+              doc: 'http://jekyllrb.com/docs/configuration/#kramdown'
+              tests:
+                - tag: |
+                    {% capture tag %}
+                    ```ruby
+                    def start
+                      puts "toto"
+                    end
+                    ```
+                    {% endcapture %}
+                    {{ tag  | markdownify }}
+
+                  comment: <a href="https://help.github.com/articles/github-flavored-markdown#syntax-highlighting">Syntax highlighting</a>
+                  expected: '<pre><code class="language-ruby">def start puts "toto" end </code></pre>'
+                  nl2space: true
