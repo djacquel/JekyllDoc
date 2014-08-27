@@ -4,47 +4,46 @@
 
 <div id="testingJekyll">
 
-  <h1>Testing Jekyll {{ jekyll.version }} -
+    <h1>Testing Tags in Jekyll {{ "{{ jekyll.version " }}}} -
     <small>
       Test count <span class="testNumber"></span>
       - Passed <span class="passedTests"></span>
       - Failed <span class="failedTests"></span>
     </small>
-  </h1>
-  <div id="toc">
-    <ul>{% assign panelCount = 0 %}{% for owner in site.data.tests %}<li><strong>{{ owner[0] }}</strong></li>{% for rub in owner[1] %}{% for cat in rub[1] %}
-    {% for tag in cat[1] %}{% assign testCount = 0 %}{% assign testLights = '' %}
-{% for test in tag[1].tests %}{% assign testCount = testCount | plus: 1 %}{% assign panelCount = panelCount | plus: 1 %}{% if forloop.first == true %}{% capture link %}<a href="#panel-{{ panelCount }}" class="" id="link-{{ panelCount }}">{{ rub[0] }}:{{ cat[0] }}:{{ tag[0] }}</a>{% endcapture %}{% endif %}{% capture testLight %}<span id="testLight-{{ panelCount }}" data-testid="{{ panelCount }}" class="testLight"></span>{% endcapture %}{% assign testLights = testLights | append: testLight %}{% endfor %}
-<li>{{ link }} {{ testLights }}</li>{% endfor %}{% endfor %}{% endfor %}{% endfor %}
-    </ul>
-  </div>
+    </h1>
 
-{% assign panelCount = 0 %}
-{% for owner in site.data.tests %}<h2>{{ owner[0] }}</h2>
-  {% for rub in owner[1] %}
-    {% for cat in rub[1] %}
-      {% for tag in cat[1] %}
-        <div class="panel-group" id="accordion{{ panelCount }}">
-        <!-- {{ owner[0] }} / {{ rub[0] }} / {{ cat[0] }} / {{ tag[0] }} +++++++++++++++++++++ -->
-          {% assign testCount = 0 %}
-          {% for test in tag[1].tests %}{% assign testCount = testCount | plus: 1 %}
-            {% assign panelCount = panelCount | plus: 1 %}
-            <div class="panel panel-default test" id="panel-{{ panelCount }}" data-testid="{{ panelCount }}" >
-              <div class="panel-heading">
+      <p class="lead">Here are some tests (to be completed) that tells you which tags are working on current Github Pages version. <a href="#footer">(see current versions at the bottom of this page)</a></p>
+
+    <div id="toc">
+        <ul>{% assign panelCount = 0 %}{% for owner in site.data.tests %}
+            <li><strong>{{ owner[0] }}</strong></li>{% for rub in owner[1] %}{% for cat in rub[1] %}{% for tag in cat[1] %}{% assign testCount = 0 %}{% assign testLights = '' %}{% for test in tag[1].tests %}{% assign testCount = testCount | plus: 1 %}{% assign panelCount = panelCount | plus: 1 %}{% if forloop.first == true %}{% capture link %}<a href="#panel-{{ panelCount }}" class="" id="link-{{ panelCount }}">{{ rub[0] }}:{{ cat[0] }}:{{ tag[0] }}</a>{% endcapture %}{% endif %}{% capture testLight %}<span id="testLight-{{ panelCount }}" data-testid="{{ panelCount }}" class="testLight"></span>{% endcapture %}{% assign testLights = testLights | append: testLight %}{% endfor %}
+            <li>{{ link }} {{ testLights }}</li>{% endfor %}{% endfor %}{% endfor %}{% endfor %}
+        </ul>
+    </div>
+{% assign panelCount = 0 %}{% for owner in site.data.tests %}<h2>{{ owner[0] }}</h2>
+  {% for rub in owner[1] %}{% for cat in rub[1] %}{% for tag in cat[1] %}
+    <div class="panel-group" id="accordion{{ panelCount }}">
+    <!-- {{ owner[0] }} / {{ rub[0] }} / {{ cat[0] }} / {{ tag[0] }} +++++++++++++++++++++ -->
+      {% assign testCount = 0 %}
+      {% for test in tag[1].tests %}{% assign testCount = testCount | plus: 1 %}
+        {% assign panelCount = panelCount | plus: 1 %}
+        <div class="panel panel-default test" id="panel-{{ panelCount }}" data-testid="{{ panelCount }}" >
+            <div class="panel-heading">
                 <p class="clearfix">
-                  <span class="testTitle">
-                  {{ owner[0] }}:{{ cat[0] }}:{{ tag[0] }}
-                   <a data-toggle="collapse" data-parent="#accordion{{ panelCount }}" href="#collapse{{ panelCount }}" class="testTitle collapsed">
-                   Test #{{ testCount }} <span class="glyphicon glyphicon-eye-open"></span>
-                  </a>
-                  </span>
-                  <small>
-                    <a href="{{ tag[1].doc }}">{{ owner[0] }} Documentation</a>
-                    - <a href="#testingJekyll" class="text-right">Back to top</a>
-                  </small>
+                    <span class="testTitle">
+                        {{ owner[0] }}:{{ cat[0] }}:{{ tag[0] }}
+                        <a data-toggle="collapse" data-parent="#accordion{{ panelCount }}" href="#collapse{{ panelCount }}" class="testTitle collapsed">
+                            Test #{{ testCount }}
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                    </span>
+                    <small>
+                        <a href="{{ tag[1].doc }}">{{ owner[0] }} Documentation</a>
+                        - <a href="#testingJekyll" class="text-right">Back to top</a>
+                    </small>
                 </p>
-              </div>
-              <div id="collapse{{ panelCount }}" class="panel-collapse collapse">
+            </div>
+            <div id="collapse{{ panelCount }}" class="panel-collapse collapse">
                 <code>{% comment %}Highlighted code needs to be on the left with no space or tab before{% endcomment %}
                 {{ "{% highlight liquid " }}%}{{ "{% raw " }}%}
                 {{ test.tag }}
@@ -56,7 +55,7 @@
                     {% if test.nl2space == true %}<dt>nl2space</dt><dd class="nl2space">{{ test.nl2space }}</dd>{% endif %}
                     {% if test.comment %}<dt>Comment</dt><dd>{{ test.comment }}</dd>{% endif %}
                 </dl>
-              </div>
             </div>
-          {% endfor %}</div>{% endfor %}{% endfor %}{% endfor %}{% endfor %}
+        </div>{% endfor %}
+    </div>{% endfor %}{% endfor %}{% endfor %}{% endfor %}
 </div>
