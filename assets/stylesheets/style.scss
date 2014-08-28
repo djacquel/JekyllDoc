@@ -167,12 +167,16 @@ permalink: /css/styles.css
   }
 
   h1, h2, h3{
-    margin: 0 0 5px;
+    margin: 0 0 15px;
   }
 
   ul, li{
     list-style: none;
     padding: 0;
+  }
+
+  .intro{
+    padding: 20px;
   }
 
   #toc{
