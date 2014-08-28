@@ -873,7 +873,7 @@ My name is {% comment %}NOT{% endcomment %}Titi.
                 <dl class="dl-horizontal">
                     <dt>Description</dt><dd>include calling variable defined in parent template</dd>
                     <dt>Expected</dt><dd class="expected">titi</dd>
-                    <dt>Result</dt><dd class="result">this test throw an exception on current Jekyll version</dd>
+                    <dt>Result</dt><dd class="result">{% assign name = "titi" %}{% include test_include.html %}</dd>
                     <dt>nl2space</dt><dd class="nl2space">true</dd>
                     
                 </dl>
