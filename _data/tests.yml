@@ -123,7 +123,12 @@ liquid:
                     expected: 'titi'
                     nl2space: true
 
-
+#            raw:
+#              doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/theme-tags#raw'
+#              tests:
+#                  - desc: insert and render Liquid tag as is in content
+#                    tag: '{% raw %}{{ 5 | plus: 6 }}{% endraw %}'
+#                    expected: '{{ 5 | plus: 6 }}'
 
 
 # don't forget {% break %}
@@ -202,14 +207,6 @@ liquid:
                     comment: 'first can be used in dot notation, in cases where it needs to be used inside a tag.'
                     expected: 'one'
 
-                  - tag: '{{ "one" | first }}'
-                    comment: Using first on a string returns the first character in the string.
-                    expected: 'o'
-                  - tag: '{% assign my_string = "one" %}{{ my_string.first }}'
-                    comment: 'first can be used in dot notation, in cases where it needs to be used inside a tag.'
-                    expected: 'o'
-
-
             last:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#last'
                 tests:
@@ -218,13 +215,6 @@ liquid:
                   - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array.last }}'
                     comment: 'last can be used in dot notation, in cases where it needs to be used inside a tag.'
                     expected: 'three'
-
-                  - tag: '{{ "one" | last }}'
-                    comment: 'Using last on a string returns the last character in the string.'
-                    expected: 'e'
-                  - tag: '{% assign my_string = "one" %}{{ my_string.last }}'
-                    comment: 'last can be used in dot notation, in cases where it needs to be used inside a tag.'
-                    expected: 'e'
 
             map:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/filters/array-filters#map'
