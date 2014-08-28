@@ -79,10 +79,35 @@ liquid:
             unless:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/control-flow-tags#unless'
                 tests:
-                  - tag: "{% assign name='toto' %}{% unless name == 'titi' %}Not titi{% endunless %}"
+                  - tag: "{% assign name='toto' %}{% unless name == 'titi' %}Not {% endunless %}titi"
                     expected: 'Not titi'
-                  - tag: "{% assign name='titi' %}{% unless name == 'titi' %}Not titi{% endunless %}"
-                    expected: ''
+                  - tag: "{% assign name='titi' %}{% unless name == 'titi' %}Not{% endunless %}titi"
+                    expected: 'titi'
+
+
+        theme:
+            comment:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/theme-tags#comment'
+                tests:
+                  - tag: 'My name is {% comment %}NOT{% endcomment %}Titi.'
+                    expected: 'My name is Titi.'
+
+            include:
+                doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/theme-tags#include'
+                tests:
+                  - tag: '{% include test_en.html %}'
+                    expected: 'english include'
+                    nl2space: true
+                  - tag: '{% assign tpl = "test_en.html" %}{% include {{ tpl }} %}'
+                    expected: 'english include'
+                    nl2space: true
+                  - tag: '{% assign lang = "en" %}{% capture filename %}test_{{ lang }}.html{% endcapture %}{% include {{filename}} %}'
+                    expected: 'english include'
+                    nl2space: true
+                  - tag: '{% assign lang = "en" %}{% include test_{{ lang }}.html %}'
+                    comment: 'Only one variable tag is allowed in the include tag.'
+                    expected: 'english include'
+                    nl2space: true
 
 
 
