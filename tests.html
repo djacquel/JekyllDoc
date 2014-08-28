@@ -110,9 +110,11 @@ weight: 30
             </div>
             <div id="collapse1" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% if "Hello world !" contains "Hello" %}contains{% else %}not found{% endif %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% if "Hello world !" contains "Hello" %}contains{% else %}not found{% endif %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">contains</dd>
@@ -141,9 +143,11 @@ weight: 30
             </div>
             <div id="collapse2" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% if "Hello world !" contains "Jelyll" %}contains{% else %}not found{% endif %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% if "Hello world !" contains "Jelyll" %}contains{% else %}not found{% endif %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">not found</dd>
@@ -172,9 +176,11 @@ weight: 30
             </div>
             <div id="collapse3" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign my_array = "one|two|three" | split: "|" %}{% if my_array contains "one" %}contains{% else %}not found{% endif %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign my_array = "one|two|three" | split: "|" %}{% if my_array contains "one" %}contains{% else %}not found{% endif %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">contains</dd>
@@ -203,9 +209,11 @@ weight: 30
             </div>
             <div id="collapse4" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign my_array = "one|two|three" | split: "|" %}{% if my_array contains "four" %}contains{% else %}not found{% endif %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign my_array = "one|two|three" | split: "|" %}{% if my_array contains "four" %}contains{% else %}not found{% endif %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">not found</dd>
@@ -239,9 +247,11 @@ weight: 30
             </div>
             <div id="collapse5" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign my_array = "one|two|three" | split: "|" %}{% for num in my_array %}{{ num }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign my_array = "one|two|three" | split: "|" %}{% for num in my_array %}{{ num }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">onetwothree</dd>
@@ -270,9 +280,11 @@ weight: 30
             </div>
             <div id="collapse6" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign my_array = "one|two|three" | split: "|" %}{{ my_array[0] }}{{ my_array[1] }}{{ my_array[2] }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign my_array = "one|two|three" | split: "|" %}{{ my_array[0] }}{{ my_array[1] }}{{ my_array[2] }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">onetwothree</dd>
@@ -306,9 +318,11 @@ weight: 30
             </div>
             <div id="collapse7" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% if 1 == 1 %}OK{% endif %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% if 1 == 1 %}OK{% endif %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">OK</dd>
@@ -337,9 +351,11 @@ weight: 30
             </div>
             <div id="collapse8" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% if 1 == "1" %}OK{% endif %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% if 1 == "1" %}OK{% endif %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected"></dd>
@@ -373,9 +389,11 @@ weight: 30
             </div>
             <div id="collapse9" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign name="toto" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign name="toto" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">toto</dd>
@@ -404,9 +422,11 @@ weight: 30
             </div>
             <div id="collapse10" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign name="titi" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign name="titi" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">titi</dd>
@@ -435,9 +455,11 @@ weight: 30
             </div>
             <div id="collapse11" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign name="yoyo" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign name="yoyo" %}{% if name == "toto" %}toto{% elsif name == "titi" %}titi{% else %}nobody{% endif %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">nobody</dd>
@@ -471,9 +493,11 @@ weight: 30
             </div>
             <div id="collapse12" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign handle = 'cake' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign handle = 'cake' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">This is a cake</dd>
@@ -502,9 +526,11 @@ weight: 30
             </div>
             <div id="collapse13" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign handle = 'cookie' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign handle = 'cookie' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">This is a cookie</dd>
@@ -533,9 +559,11 @@ weight: 30
             </div>
             <div id="collapse14" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign handle = 'bacon' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign handle = 'bacon' %}{% case handle %}{% when 'cake' %}This is a cake{% when 'cookie' %}This is a cookie{% else %}This is not a cake nor a cookie{% endcase %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">This is not a cake nor a cookie</dd>
@@ -569,9 +597,11 @@ weight: 30
             </div>
             <div id="collapse15" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign name='toto' %}{% unless name == 'titi' %}Not titi{% endunless %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign name='toto' %}{% unless name == 'titi' %}Not titi{% endunless %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">Not titi</dd>
@@ -600,9 +630,11 @@ weight: 30
             </div>
             <div id="collapse16" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign name='titi' %}{% unless name == 'titi' %}Not titi{% endunless %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign name='titi' %}{% unless name == 'titi' %}Not titi{% endunless %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected"></dd>
@@ -636,9 +668,11 @@ weight: 30
             </div>
             <div id="collapse17" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% for num in site.tests.multi-dim-array.arrayone %}{% if forloop.first == true %}{{ num }}{% else %}-{% endif %}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% for num in site.tests.multi-dim-array.arrayone %}{% if forloop.first == true %}{{ num }}{% else %}-{% endif %}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">one--</dd>
@@ -672,9 +706,11 @@ weight: 30
             </div>
             <div id="collapse18" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.index }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.index }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">123</dd>
@@ -708,9 +744,11 @@ weight: 30
             </div>
             <div id="collapse19" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.index0 }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.index0 }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">012</dd>
@@ -744,9 +782,11 @@ weight: 30
             </div>
             <div id="collapse20" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% for num in site.tests.multi-dim-array.arrayone %}{% if forloop.last == true %}{{ num }}{% else %}-{% endif %}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% for num in site.tests.multi-dim-array.arrayone %}{% if forloop.last == true %}{{ num }}{% else %}-{% endif %}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">--three</dd>
@@ -780,9 +820,11 @@ weight: 30
             </div>
             <div id="collapse21" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.rindex }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.rindex }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">321</dd>
@@ -816,9 +858,11 @@ weight: 30
             </div>
             <div id="collapse22" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.rindex0 }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% for num in site.tests.multi-dim-array.arrayone %}{{ forloop.rindex0 }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">210</dd>
@@ -852,9 +896,11 @@ weight: 30
             </div>
             <div id="collapse23" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% for num in site.tests.multi-dim-array.arrayone %}{% capture length %}{{ forloop.length }}{% endcapture %}{% endfor %}{{ length }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% for num in site.tests.multi-dim-array.arrayone %}{% capture length %}{{ forloop.length }}{% endcapture %}{% endfor %}{{ length }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">3</dd>
@@ -888,9 +934,11 @@ weight: 30
             </div>
             <div id="collapse24" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign my_array = "one|two|three" | split: "|" | join: ", " %}{{ my_array }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign my_array = "one|two|three" | split: "|" | join: ", " %}{{ my_array }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">one, two, three</dd>
@@ -924,9 +972,11 @@ weight: 30
             </div>
             <div id="collapse25" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "one|two|three" | split: "|" | first }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "one|two|three" | split: "|" | first }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">one</dd>
@@ -955,9 +1005,11 @@ weight: 30
             </div>
             <div id="collapse26" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign my_array = "one|two|three" | split: "|" %}{{ my_array.first }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign my_array = "one|two|three" | split: "|" %}{{ my_array.first }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">one</dd>
@@ -986,9 +1038,11 @@ weight: 30
             </div>
             <div id="collapse27" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "one" | first }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "one" | first }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">o</dd>
@@ -1017,9 +1071,11 @@ weight: 30
             </div>
             <div id="collapse28" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign my_string = "one" %}{{ my_string.first }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign my_string = "one" %}{{ my_string.first }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">o</dd>
@@ -1053,9 +1109,11 @@ weight: 30
             </div>
             <div id="collapse29" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "one|two|three" | split: "|" | last }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "one|two|three" | split: "|" | last }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">three</dd>
@@ -1084,9 +1142,11 @@ weight: 30
             </div>
             <div id="collapse30" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign my_array = "one|two|three" | split: "|" %}{{ my_array.last }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign my_array = "one|two|three" | split: "|" %}{{ my_array.last }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">three</dd>
@@ -1115,9 +1175,11 @@ weight: 30
             </div>
             <div id="collapse31" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "one" | last }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "one" | last }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">e</dd>
@@ -1146,9 +1208,11 @@ weight: 30
             </div>
             <div id="collapse32" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign my_string = "one" %}{{ my_string.last }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign my_string = "one" %}{{ my_string.last }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">e</dd>
@@ -1182,9 +1246,11 @@ weight: 30
             </div>
             <div id="collapse33" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign mapping = site.tests.multi-dim-array | map: "arrayone" %}{{ mapping }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign mapping = site.tests.multi-dim-array | map: "arrayone" %}{{ mapping }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">onetwothree</dd>
@@ -1218,9 +1284,11 @@ weight: 30
             </div>
             <div id="collapse34" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "this is a 30 character string!" | size }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "this is a 30 character string!" | size }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">30</dd>
@@ -1249,9 +1317,11 @@ weight: 30
             </div>
             <div id="collapse35" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "one|two|three" | split: "|" | size }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "one|two|three" | split: "|" | size }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">3</dd>
@@ -1285,9 +1355,11 @@ weight: 30
             </div>
             <div id="collapse36" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign posts = site.tests.posts | sort: "weight" %}{% for post in posts %}{{ post.weight }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign posts = site.tests.posts | sort: "weight" %}{% for post in posts %}{{ post.weight }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">102030</dd>
@@ -1316,9 +1388,11 @@ weight: 30
             </div>
             <div id="collapse37" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign posts = site.tests.posts | sort: "title" %}{% for post in posts %}{{ post.title }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign posts = site.tests.posts | sort: "title" %}{% for post in posts %}{{ post.title }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">ABab</dd>
@@ -1352,9 +1426,11 @@ weight: 30
             </div>
             <div id="collapse38" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 4.6 | ceil }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 4.6 | ceil }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">5</dd>
@@ -1388,9 +1464,11 @@ weight: 30
             </div>
             <div id="collapse39" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 6 | divided_by: 3 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 6 | divided_by: 3 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">2</dd>
@@ -1419,9 +1497,11 @@ weight: 30
             </div>
             <div id="collapse40" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 3 | divided_by: 5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 3 | divided_by: 5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">0</dd>
@@ -1450,9 +1530,11 @@ weight: 30
             </div>
             <div id="collapse41" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "3" | divided_by: 5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "3" | divided_by: 5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">0</dd>
@@ -1481,9 +1563,11 @@ weight: 30
             </div>
             <div id="collapse42" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "3.0" | divided_by: 5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "3.0" | divided_by: 5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">0.6</dd>
@@ -1512,9 +1596,11 @@ weight: 30
             </div>
             <div id="collapse43" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 3.0 | divided_by: 5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 3.0 | divided_by: 5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">0.6</dd>
@@ -1543,9 +1629,11 @@ weight: 30
             </div>
             <div id="collapse44" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "3" | divided_by: 5.0 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "3" | divided_by: 5.0 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">0.6</dd>
@@ -1574,9 +1662,11 @@ weight: 30
             </div>
             <div id="collapse45" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 3 | divided_by: "5.0" }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 3 | divided_by: "5.0" }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">0.6</dd>
@@ -1610,9 +1700,11 @@ weight: 30
             </div>
             <div id="collapse46" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 4.6 | floor }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 4.6 | floor }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">4</dd>
@@ -1646,9 +1738,11 @@ weight: 30
             </div>
             <div id="collapse47" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 16 | minus: 15 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 16 | minus: 15 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">1</dd>
@@ -1677,9 +1771,11 @@ weight: 30
             </div>
             <div id="collapse48" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "16" | minus: 15 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "16" | minus: 15 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">1</dd>
@@ -1708,9 +1804,11 @@ weight: 30
             </div>
             <div id="collapse49" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 16 | minus: "15" }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 16 | minus: "15" }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">1</dd>
@@ -1739,9 +1837,11 @@ weight: 30
             </div>
             <div id="collapse50" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 1 | minus: 0.5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 1 | minus: 0.5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">0.5</dd>
@@ -1770,9 +1870,11 @@ weight: 30
             </div>
             <div id="collapse51" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 1 | minus: "0.5" }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 1 | minus: "0.5" }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">0.5</dd>
@@ -1801,9 +1903,11 @@ weight: 30
             </div>
             <div id="collapse52" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "1" | minus: 0.5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "1" | minus: 0.5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">0.5</dd>
@@ -1837,9 +1941,11 @@ weight: 30
             </div>
             <div id="collapse53" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 16 | plus: 15 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 16 | plus: 15 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">31</dd>
@@ -1868,9 +1974,11 @@ weight: 30
             </div>
             <div id="collapse54" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "16" | plus: 15 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "16" | plus: 15 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">31</dd>
@@ -1899,9 +2007,11 @@ weight: 30
             </div>
             <div id="collapse55" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 16 | plus: "15" }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 16 | plus: "15" }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">31</dd>
@@ -1930,9 +2040,11 @@ weight: 30
             </div>
             <div id="collapse56" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 1.6 | plus: 1.5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 1.6 | plus: 1.5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">3.1</dd>
@@ -1961,9 +2073,11 @@ weight: 30
             </div>
             <div id="collapse57" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "1.6" | plus: 1.5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "1.6" | plus: 1.5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">3.1</dd>
@@ -1992,9 +2106,11 @@ weight: 30
             </div>
             <div id="collapse58" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 1.6 | plus: "1.5" }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 1.6 | plus: "1.5" }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">3.1</dd>
@@ -2028,9 +2144,11 @@ weight: 30
             </div>
             <div id="collapse59" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 4.6 | round }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 4.6 | round }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">5</dd>
@@ -2059,9 +2177,11 @@ weight: 30
             </div>
             <div id="collapse60" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 4.3 | round }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 4.3 | round }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">4</dd>
@@ -2090,9 +2210,11 @@ weight: 30
             </div>
             <div id="collapse61" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 4.5612 | round: 2 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 4.5612 | round: 2 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">456</dd>
@@ -2126,9 +2248,11 @@ weight: 30
             </div>
             <div id="collapse62" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 100 | times: 2 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 100 | times: 2 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">200</dd>
@@ -2157,9 +2281,11 @@ weight: 30
             </div>
             <div id="collapse63" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 10.12 | times: 10 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 10.12 | times: 10 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">101.2</dd>
@@ -2188,9 +2314,11 @@ weight: 30
             </div>
             <div id="collapse64" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 10 | times: 10.12 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 10 | times: 10.12 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">101.2</dd>
@@ -2224,9 +2352,11 @@ weight: 30
             </div>
             <div id="collapse65" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 12 | modulo: 5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 12 | modulo: 5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">2</dd>
@@ -2255,9 +2385,11 @@ weight: 30
             </div>
             <div id="collapse66" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "12" | modulo: 5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "12" | modulo: 5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">2</dd>
@@ -2286,9 +2418,11 @@ weight: 30
             </div>
             <div id="collapse67" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 12 | modulo: "5" }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 12 | modulo: "5" }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">2</dd>
@@ -2317,9 +2451,11 @@ weight: 30
             </div>
             <div id="collapse68" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 1.2 | modulo: 5 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 1.2 | modulo: 5 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">1.2</dd>
@@ -2348,9 +2484,11 @@ weight: 30
             </div>
             <div id="collapse69" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 15.5 | modulo: 5.1 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 15.5 | modulo: 5.1 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">0.2</dd>
@@ -2384,9 +2522,11 @@ weight: 30
             </div>
             <div id="collapse70" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 'sales' | append: '.jpg' }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 'sales' | append: '.jpg' }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">sales.jpg</dd>
@@ -2420,9 +2560,11 @@ weight: 30
             </div>
             <div id="collapse71" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 'capitalize me' | capitalize }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 'capitalize me' | capitalize }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">Capitalize me</dd>
@@ -2456,9 +2598,11 @@ weight: 30
             </div>
             <div id="collapse72" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 'UPPERCASE' | downcase }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 'UPPERCASE' | downcase }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">uppercase</dd>
@@ -2492,9 +2636,11 @@ weight: 30
             </div>
             <div id="collapse73" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "<p>test</p>" | escape }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "<p>test</p>" | escape }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">&lt;p&gt;test&lt;/p&gt;</dd>
@@ -2528,9 +2674,11 @@ weight: 30
             </div>
             <div id="collapse74" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ site.tests.string-with-newlines | newline_to_br | escape }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ site.tests.string-with-newlines | newline_to_br | escape }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">One&lt;br /&gt;
@@ -2567,9 +2715,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse75" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 'sale' | prepend: 'Made a great ' }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 'sale' | prepend: 'Made a great ' }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">Made a great sale</dd>
@@ -2603,9 +2753,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse76" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "Hello, world. Goodbye, world." | remove: "world" }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "Hello, world. Goodbye, world." | remove: "world" }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">Hello, . Goodbye, .</dd>
@@ -2639,9 +2791,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse77" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "Hello, world. Goodbye, world." | remove_first: "world" }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "Hello, world. Goodbye, world." | remove_first: "world" }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">Hello, . Goodbye, world.</dd>
@@ -2675,9 +2829,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse78" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 'Hello World !' | replace: 'World', 'Jekyll' }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 'Hello World !' | replace: 'World', 'Jekyll' }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">Hello Jekyll !</dd>
@@ -2711,9 +2867,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse79" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 'Awesome Awesome Shoes' | replace_first: 'Awesome', 'Mega' }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 'Awesome Awesome Shoes' | replace_first: 'Awesome', 'Mega' }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">Mega Awesome Shoes</dd>
@@ -2747,9 +2905,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse80" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "hello" | slice: 2 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "hello" | slice: 2 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">e</dd>
@@ -2778,9 +2938,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse81" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "hello" | slice: 1, 3 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "hello" | slice: 1, 3 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">ell</dd>
@@ -2809,9 +2971,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse82" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "hello" | slice: -3, 2  }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "hello" | slice: -3, 2  }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">el</dd>
@@ -2845,9 +3009,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse83" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign words = "Uses cheat codes, calls the game boring." | split: " " %}{% for word in words %}{{ word }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign words = "Uses cheat codes, calls the game boring." | split: " " %}{% for word in words %}{{ word }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">Usescheatcodes,callsthegameboring.</dd>
@@ -2881,9 +3047,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse84" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                |{{'   too many spaces      '|strip}}|
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+|{{'   too many spaces      '|strip}}|
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">|too many spaces|</dd>
@@ -2917,9 +3085,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse85" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                |{{ '   too many spaces           ' | lstrip }}|
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+|{{ '   too many spaces           ' | lstrip }}|
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">|too many spaces           |</dd>
@@ -2953,9 +3123,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse86" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                |{{ '   too many spaces           ' | rstrip }}|
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+|{{ '   too many spaces           ' | rstrip }}|
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">|   too many spaces|</dd>
@@ -2989,9 +3161,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse87" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "<h1>Hello</h1> World" | strip_html }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "<h1>Hello</h1> World" | strip_html }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">Hello World</dd>
@@ -3025,9 +3199,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse88" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ site.tests.string-with-newlines | strip_newlines }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ site.tests.string-with-newlines | strip_newlines }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">OneTwoThree</dd>
@@ -3061,9 +3237,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse89" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "The cat came back the very next day" | truncate: 10 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "The cat came back the very next day" | truncate: 10 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">The cat...</dd>
@@ -3097,9 +3275,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse90" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "The cat came back the very next day" | truncatewords: 4 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "The cat came back the very next day" | truncatewords: 4 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">The cat came back...</dd>
@@ -3133,9 +3313,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse91" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ 'i want this to be uppercase' | upcase }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ 'i want this to be uppercase' | upcase }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">I WANT THIS TO BE UPPERCASE</dd>
@@ -3170,9 +3352,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse92" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "Fri, 07 Nov 2008 00:00:00 +0100" | date_to_xmlschema }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "Fri, 07 Nov 2008 00:00:00 +0100" | date_to_xmlschema }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">2008-11-07T00:00:00+01:00</dd>
@@ -3206,9 +3390,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse93" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "2008-11-07T00:00:00+01:00" | date_to_rfc822 }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "2008-11-07T00:00:00+01:00" | date_to_rfc822 }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">Fri, 07 Nov 2008 00:00:00 +0100</dd>
@@ -3242,9 +3428,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse94" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "Fri, 07 Nov 2008 00:00:00 +0100" | date_to_string }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "Fri, 07 Nov 2008 00:00:00 +0100" | date_to_string }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">07 Nov 2008</dd>
@@ -3278,9 +3466,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse95" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "Fri, 07 Nov 2008 00:00:00 +0100" | date_to_long_string }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "Fri, 07 Nov 2008 00:00:00 +0100" | date_to_long_string }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">07 November 2008</dd>
@@ -3314,9 +3504,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse96" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% capture post %}{{ site.tests.posts | where:"weight", 10 }}{% endcapture %}{{ post }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% capture post %}{{ site.tests.posts | where:"weight", 10 }}{% endcapture %}{{ post }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">{"title"=>"a", "content"=>"a title body", "weight"=>10}</dd>
@@ -3350,9 +3542,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse97" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "three word sentence" | number_of_words }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "three word sentence" | number_of_words }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">3</dd>
@@ -3386,9 +3580,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse98" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign my_array = "one|two|three" | split: "|" %}{{ my_array | array_to_sentence_string }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | array_to_sentence_string }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">one, two, and three</dd>
@@ -3422,9 +3618,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse99" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "**strong** and *em*" | markdownify | escape }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "**strong** and *em*" | markdownify | escape }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">{{ "<p><strong>strong</strong> and <em>em</em></p>" | escape }}</dd>
@@ -3458,9 +3656,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse100" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ site.tests.posts[0] | jsonify }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ site.tests.posts[0] | jsonify }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">{"title":"A","content":"A title body","weight":30}</dd>
@@ -3494,9 +3694,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse101" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign posts = site.tests.posts | sort: "weight" %}{% for post in posts %}{{ post.title }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign posts = site.tests.posts | sort: "weight" %}{% for post in posts %}{{ post.title }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">baBA</dd>
@@ -3525,9 +3727,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse102" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign posts = site.tests.posts | sort: "weight", "last" %}{% for post in posts %}{{ post.title }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign posts = site.tests.posts | sort: "weight", "last" %}{% for post in posts %}{{ post.title }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">aBAb</dd>
@@ -3556,9 +3760,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse103" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% assign posts = site.tests.posts | sort: "weight", "first" %}{% for post in posts %}{{ post.title }}{% endfor %}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{% assign posts = site.tests.posts | sort: "weight", "first" %}{% for post in posts %}{{ post.title }}{% endfor %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">baBA</dd>
@@ -3593,9 +3799,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse104" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "perform_complicated_task"  | markdownify }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "perform_complicated_task"  | markdownify }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected"><p>perform_complicated_task</p>
@@ -3630,9 +3838,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse105" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "http://example.com"  | markdownify }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "http://example.com"  | markdownify }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">{{ <a href=>http://example.com</a> | escape }}</dd>
@@ -3666,9 +3876,11 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse106" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {{ "~~Mistaken text.~~"  | markdownify }}
-                {% endraw %}{% endhighlight %}
+{% highlight liquid %}
+{% raw %}
+{{ "~~Mistaken text.~~"  | markdownify }}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected">{{ "<del>Mistaken text.</del>" | escape }}</dd>
@@ -3702,12 +3914,14 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse107" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% capture tag %} ``` function test() {
+{% highlight liquid %}
+{% raw %}
+{% capture tag %} ``` function test() {
   console.log("toto");
 } ``` {% endcapture %} {{ tag  | markdownify }}
 
-                {% endraw %}{% endhighlight %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected"><p><code>function test() { console.log("toto"); }</code></p></dd>
@@ -3744,8 +3958,9 @@ Three&lt;br /&gt;
             </div>
             <div id="collapse108" class="panel-collapse collapse">
                 <code>
-                {% highlight liquid %}{% raw %}
-                {% capture tag %}
+{% highlight liquid %}
+{% raw %}
+{% capture tag %}
 ```ruby
 def start
   puts "toto"
@@ -3754,7 +3969,8 @@ end
 {% endcapture %}
 {{ tag  | markdownify }}
 
-                {% endraw %}{% endhighlight %}
+{% endraw %}
+{% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     <dt>Expected</dt><dd class="expected"><pre><code class="language-ruby">def start puts "toto" end </code></pre></dd>
