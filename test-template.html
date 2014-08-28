@@ -55,8 +55,9 @@
 {{ "{% endhighlight " }}%}
                 </code>
                 <dl class="dl-horizontal">
+                    {% if test.desc %}<dt>Description</dt><dd>{{ test.desc }}</dd>{% endif %}
                     <dt>Expected</dt><dd class="expected">{{ test.expected }}</dd>
-                    <dt>Result</dt><dd class="result">{{ test.tag }}</dd>
+                    <dt>Result</dt><dd class="result">{% if test.exception == true %}this test throw an exception on current Jekyll version{% else %}{{ test.tag }}{% endif %}</dd>
                     {% if test.nl2space == true %}<dt>nl2space</dt><dd class="nl2space">{{ test.nl2space }}</dd>{% endif %}
                     {% if test.comment %}<dt>Comment</dt><dd>{{ test.comment }}</dd>{% endif %}
                 </dl>

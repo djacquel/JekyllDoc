@@ -95,19 +95,34 @@ liquid:
             include:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/theme-tags#include'
                 tests:
-                  - tag: '{% include test_en.html %}'
+
+                  - desc: simple include
+                    tag: '{% include test_en.html %}'
                     expected: 'english include'
                     nl2space: true
-                  - tag: '{% assign tpl = "test_en.html" %}{% include {{ tpl }} %}'
+
+                  - desc: include with file name in a variable
+                    tag: '{% assign tpl = "test_en.html" %}{% include {{ tpl }} %}'
                     expected: 'english include'
                     nl2space: true
-                  - tag: '{% assign lang = "en" %}{% capture filename %}test_{{ lang }}.html{% endcapture %}{% include {{filename}} %}'
+
+                  - desc: include with "dynamic" file name concatenation
+                    tag: '{% assign lang = "en" %}{% capture filename %}test_{{ lang }}.html{% endcapture %}{% include {{filename}} %}'
                     expected: 'english include'
                     nl2space: true
-                  - tag: '{% assign lang = "en" %}{% include test_{{ lang }}.html %}'
-                    comment: 'Only one variable tag is allowed in the include tag.'
+
+                  - desc: include with "dynamic" file name concatenation in include tag
+                    tag: '{% assign lang = "en" %}{% include test_{{ lang }}.html %}'
+                    comment: 'Jekyll 2.3 - Only one variable tag is allowed in the include tag.'
                     expected: 'english include'
                     nl2space: true
+                    exception: true
+
+                  - desc: include calling variable defined in parent template
+                    tag: '{% assign name = "titi" %}{% include test_include.html %}'
+                    expected: 'titi'
+                    nl2space: true
+
 
 
 
