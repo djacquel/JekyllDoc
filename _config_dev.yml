@@ -1,6 +1,6 @@
 # local config
 # use with : jekyll build --config _config.yml,_config_dev.yml
-baseurl: "/jekyll/JekyllDoc/_site/"
+baseurl: "/jekyll/doc/_site/"
 url: "http://test.dev"
 
 googleAnalyticsCode: NOCODE
