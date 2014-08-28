@@ -115,6 +115,10 @@ function testingJekyll(){
       result   = nl2space( result );
     }
 
+
+    console.log('expected =|' + expected  +'|');
+    console.log('result   =|' + result +'|');
+
     if( expected != result ){
       resultClass = "danger";
       resultText  = "FAILED";
