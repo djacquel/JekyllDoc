@@ -18,7 +18,7 @@ module Py
 
         def self.build_jekyll
             puts "Building Jekyll"
-            system "jekyll build --config _config.yml,_config_dev.yml --trace"
+            system "bundle exec jekyll build --config _config.yml,_config_dev.yml --trace"
         end
 
     end
