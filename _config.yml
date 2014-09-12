@@ -49,7 +49,8 @@ googleAnalyticsCode: UA-157621-1
 # packages versions
 twb-sass-version: 2.3.0
 
-
+gems:
+    - jekyll-redirect-from
 
 # variables for tests page
 tests:

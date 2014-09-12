@@ -2,8 +2,8 @@
 layout: post
 title:  "Jeckyll's configuration"
 date:   2014-08-01
+redirect_from: "/toto"
 ---
-
 
 
 {% include _links_library.markdown %}
