@@ -41,7 +41,7 @@
                    Test #{{ testCount }} <span class="glyphicon glyphicon-eye-open"></span> </a>
                   </span>
                   <small>
-                    <a href="{{ tag[1].doc }}">{{ owner[0] }} Documentation</a>
+{% if tag[1].doc && tag[1].doc != nil %}<a href="{{ tag[1].doc }}">{{ owner[0] }} Documentation</a>{% endif %}
                     - <a href="#testingJekyll" class="text-right">Back to top</a>
                   </small>
                 </p>

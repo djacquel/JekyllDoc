@@ -242,6 +242,42 @@ liquid:
                     comment: this filter is overriden by Jekyll sort
                     expected: 'ABab'
 
+            push:
+                doc:
+                tests:
+                  - tag: '{% assign my_array = "one|two" | split: "|" %}{{ my_array | push: "three" }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'onetwothree'
+
+            pop:
+                doc:
+                tests:
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | pop }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'onetwo'
+
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | pop: 2 }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'one'
+
+            shift:
+                doc:
+                tests:
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | shift }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'twothree'
+
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | shift: 2 }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'three'
+
+            unshift:
+                doc:
+                tests:
+                  - tag: '{% assign my_array = "one|two" | split: "|" %}{{ my_array | unshift: "three" }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'threeonetwo'
+
         math:
 
             ceil:
