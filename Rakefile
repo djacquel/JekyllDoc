@@ -12,7 +12,7 @@ module Py
     class Test
 
         def self.get_template
-            puts "Copy #{TPL} content"
+            puts "Reads #{TPL} content"
             File.read(TPL)
         end
 
@@ -62,3 +62,8 @@ task :test do
 end # task :post
 
 
+desc "Build Jekyll with development configuration"
+task :dev do |t|
+  puts "Building with dev parameters"
+  sh 'jekyll build --config _config.yml,_config_dev.yml --trace'
+end
