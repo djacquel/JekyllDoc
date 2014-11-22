@@ -515,6 +515,15 @@ jekyll:
                     comment: this filter need better testing
                     expected: '{"title"=>"a", "content"=>"a title body", "weight"=>10}'
 
+            group_by:
+
+                tests:
+                  - tag: >
+                           {% assign groups = site.tests.posts | group_by: "group" %}{{ groups | debug }}
+                           {% for group in groups %}{{ group.name }}{% for item in group.items %}{{item.title}}{%endfor%}{%endfor%}
+                    comment: this filter need better testing
+                    expected: 'totoABtitiab'
+
             jsonify:
                 doc: 'http://jekyllrb.com/docs/templates/#filters'
                 tests:

@@ -66,14 +66,17 @@ tests:
     - title: A
       content:  A title body
       weight: 30
+      group: toto
 
     - title: a
       content: a title body
       weight: 10
+      group: titi
 
     - title: B
       content: B title body
       weight: 20
+      group: toto
 
     - title: b
       content: b title body
