@@ -40,9 +40,8 @@
                             <span class="glyphicon glyphicon-eye-open"></span>
                         </a>
                     </span>
-                    <small>
-                        <a href="{{ tag[1].doc }}">{{ owner[0] }} Documentation</a>
-                        - <a href="#testingJekyll" class="text-right">Back to top</a>
+                    <small>{% if tag[1].doc and tag[1].doc != '' %}<a href="{{ tag[1].doc }}">{{ owner[0] }} Documentation</a> - {% endif %}
+                        <a href="#testingJekyll" class="text-right">Back to top</a>
                     </small>
                 </p>
             </div>
