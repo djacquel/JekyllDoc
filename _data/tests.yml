@@ -519,10 +519,11 @@ jekyll:
 
                 tests:
                   - tag: >
-                           {% assign groups = site.tests.posts | group_by: "group" %}{{ groups | debug }}
+                           {% assign groups = site.tests.posts | group_by: "group" %}
                            {% for group in groups %}{{ group.name }}{% for item in group.items %}{{item.title}}{%endfor%}{%endfor%}
                     comment: this filter need better testing
                     expected: 'totoABtitiab'
+                    nl2space: true
 
             jsonify:
                 doc: 'http://jekyllrb.com/docs/templates/#filters'

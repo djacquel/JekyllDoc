@@ -3564,17 +3564,17 @@ Three&lt;br /&gt;
                 <code>
 {% highlight liquid %}
 {% raw %}
-{% assign groups = site.tests.posts | group_by: "group" %}{{ groups | debug }} {% for group in groups %}{{ group.name }}{% for item in group.items %}{{item.title}}{%endfor%}{%endfor%}
+{% assign groups = site.tests.posts | group_by: "group" %} {% for group in groups %}{{ group.name }}{% for item in group.items %}{{item.title}}{%endfor%}{%endfor%}
 
 {% endraw %}
 {% endhighlight %}
                 </code>
                 <dl class="dl-horizontal">
                     
-                    <dt>Expected</dt><dd class="expected">toto</dd>
-                    <dt>Result</dt><dd class="result">{% assign groups = site.tests.posts | group_by: "group" %}{{ groups | debug }} {% for group in groups %}{{ group.name }}{% for item in group.items %}{{item.title}}{%endfor%}{%endfor%}
+                    <dt>Expected</dt><dd class="expected">totoABtitiab</dd>
+                    <dt>Result</dt><dd class="result">{% assign groups = site.tests.posts | group_by: "group" %} {% for group in groups %}{{ group.name }}{% for item in group.items %}{{item.title}}{%endfor%}{%endfor%}
 </dd>
-                    
+                    <dt>nl2space</dt><dd class="nl2space">true</dd>
                     <dt>Comment</dt><dd>this filter need better testing</dd>
                 </dl>
             </div>
