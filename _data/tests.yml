@@ -84,44 +84,12 @@ liquid:
                   - tag: "{% assign name='titi' %}{% unless name == 'titi' %}Not{% endunless %}titi"
                     expected: 'titi'
 
-
         theme:
             comment:
                 doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/theme-tags#comment'
                 tests:
                   - tag: 'My name is {% comment %}NOT{% endcomment %}Titi.'
                     expected: 'My name is Titi.'
-
-            include:
-                doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/theme-tags#include'
-                tests:
-
-                  - desc: simple include
-                    tag: '{% include test_en.html %}'
-                    expected: 'english include'
-                    nl2space: true
-
-                  - desc: include with file name in a variable
-                    tag: '{% assign tpl = "test_en.html" %}{% include {{ tpl }} %}'
-                    expected: 'english include'
-                    nl2space: true
-
-                  - desc: include with "dynamic" file name concatenation
-                    tag: '{% assign lang = "en" %}{% capture filename %}test_{{ lang }}.html{% endcapture %}{% include {{filename}} %}'
-                    expected: 'english include'
-                    nl2space: true
-
-                  - desc: include with "dynamic" file name concatenation in include tag
-                    tag: '{% assign lang = "en" %}{% include test_{{ lang }}.html %}'
-                    comment: 'Jekyll 2.3 - Only one variable tag is allowed in the include tag.'
-                    expected: 'english include'
-                    nl2space: true
-                    exception: true
-
-                  - desc: include calling variable defined in parent template
-                    tag: '{% assign name = "titi" %}{% include test_include.html %}'
-                    expected: 'titi'
-                    nl2space: true
 
 #            raw:
 #              doc: 'http://docs.shopify.com/themes/liquid-documentation/tags/theme-tags#raw'
@@ -242,41 +210,6 @@ liquid:
                     comment: this filter is overriden by Jekyll sort
                     expected: 'ABab'
 
-            push:
-                doc:
-                tests:
-                  - tag: '{% assign my_array = "one|two" | split: "|" %}{{ my_array | push: "three" }}'
-                    comment: Jekyll 2.4 specific
-                    expected: 'onetwothree'
-
-            pop:
-                doc:
-                tests:
-                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | pop }}'
-                    comment: Jekyll 2.4 specific
-                    expected: 'onetwo'
-
-                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | pop: 2 }}'
-                    comment: Jekyll 2.4 specific
-                    expected: 'one'
-
-            shift:
-                doc:
-                tests:
-                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | shift }}'
-                    comment: Jekyll 2.4 specific
-                    expected: 'twothree'
-
-                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | shift: 2 }}'
-                    comment: Jekyll 2.4 specific
-                    expected: 'three'
-
-            unshift:
-                doc:
-                tests:
-                  - tag: '{% assign my_array = "one|two" | split: "|" %}{{ my_array | unshift: "three" }}'
-                    comment: Jekyll 2.4 specific
-                    expected: 'threeonetwo'
 
         math:
 
@@ -528,8 +461,96 @@ liquid:
 jekyll:
 
     filters:
-        specific:
 
+        array:
+
+            array_to_sentence_string:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | array_to_sentence_string }}'
+                    expected: 'one, two, and three'
+
+            push:
+                doc:
+                tests:
+                  - tag: '{% assign my_array = "one|two" | split: "|" %}{{ my_array | push: "three" }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'onetwothree'
+
+            pop:
+                doc:
+                tests:
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | pop }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'three'
+
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | pop: 2 }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'twothree'
+
+            shift:
+                doc:
+                tests:
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | shift }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'one'
+
+                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | shift: 2 }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'onetwo'
+
+            unshift:
+                doc:
+                tests:
+                  - tag: '{% assign my_array = "one|two" | split: "|" %}{{ my_array | unshift: "three" }}'
+                    comment: Jekyll 2.4 specific
+                    expected: 'threeonetwo'
+
+        enumerable:
+
+            where:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{% capture post %}{{ site.tests.posts | where:"weight", 10 }}{% endcapture %}{{ post }}'
+                    comment: this filter need better testing
+                    expected: '{"title"=>"a", "content"=>"a title body", "weight"=>10}'
+
+            jsonify:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{{ site.tests.posts[0] | jsonify }}'
+                    expected: '{"title":"A","content":"A title body","weight":30}'
+
+            sort:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{% assign posts = site.tests.posts | sort: "weight" %}{% for post in posts %}{{ post.title }}{% endfor %}'
+                    expected: 'baBA'
+
+                  - tag: '{% assign posts = site.tests.posts | sort: "weight", "last" %}{% for post in posts %}{{ post.title }}{% endfor %}'
+                    expected: 'aBAb'
+
+                  - tag: '{% assign posts = site.tests.posts | sort: "weight", "first" %}{% for post in posts %}{{ post.title }}{% endfor %}'
+                    expected: 'baBA'
+
+        string:
+
+            number_of_words:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+
+                tests:
+                  - tag: '{{ "three word sentence" | number_of_words }}'
+                    expected: 3
+
+            markdownify:
+                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                tests:
+                  - tag: '{{ "**strong** and *em*" | markdownify | escape }}'
+                    comment: this test is passing. problem in the expected tag that adds a newline
+                    expected: '{{ "<p><strong>strong</strong> and <em>em</em></p>" | escape }}'
+                    nl2space: true
+
+        date:
             date_to_xmlschema:
                 doc: 'http://jekyllrb.com/docs/templates/#filters'
                 tests:
@@ -554,51 +575,74 @@ jekyll:
                   - tag: '{{ "Fri, 07 Nov 2008 00:00:00 +0100" | date_to_long_string }}'
                     expected: '07 November 2008'
 
-            where:
-                doc: 'http://jekyllrb.com/docs/templates/#filters'
-                tests:
-                  - tag: '{% capture post %}{{ site.tests.posts | where:"weight", 10 }}{% endcapture %}{{ post }}'
-                    comment: this filter need better testing
-                    expected: '{"title"=>"a", "content"=>"a title body", "weight"=>10}'
 
-            number_of_words:
-                doc: 'http://jekyllrb.com/docs/templates/#filters'
+    tags:
 
-                tests:
-                  - tag: '{{ "three word sentence" | number_of_words }}'
-                    expected: 3
+      theme:
 
-            array_to_sentence_string:
-                doc: 'http://jekyllrb.com/docs/templates/#filters'
+            include:
+                doc: 'http://jekyllrb.com/docs/templates/#includes'
                 tests:
-                  - tag: '{% assign my_array = "one|two|three" | split: "|" %}{{ my_array | array_to_sentence_string }}'
-                    expected: 'one, two, and three'
 
-            markdownify:
-                doc: 'http://jekyllrb.com/docs/templates/#filters'
-                tests:
-                  - tag: '{{ "**strong** and *em*" | markdownify | escape }}'
-                    comment: this test is passing. problem in the expected tag that adds a newline
-                    expected: '{{ "<p><strong>strong</strong> and <em>em</em></p>" | escape }}'
+                  - desc: simple include
+                    tag: '{% include test_en.html %}'
+                    expected: 'english include'
                     nl2space: true
 
-            jsonify:
-                doc: 'http://jekyllrb.com/docs/templates/#filters'
+                  - desc: include with file name in a variable
+                    tag: '{% assign tpl = "test_en.html" %}{% include {{ tpl }} %}'
+                    expected: 'english include'
+                    nl2space: true
+
+                  - desc: include with "dynamic" file name concatenation
+                    tag: '{% assign lang = "en" %}{% capture filename %}test_{{ lang }}.html{% endcapture %}{% include {{filename}} %}'
+                    expected: 'english include'
+                    nl2space: true
+
+                  - desc: include with "dynamic" file name concatenation in include tag
+                    tag: '{% assign lang = "en" %}{% include test_{{ lang }}.html %}'
+                    comment: 'Jekyll 2.3 - Only one variable tag is allowed in the include tag.'
+                    expected: 'english include'
+                    nl2space: true
+                    exception: true
+
+                  - desc: include calling variable defined in parent template
+                    tag: '{% assign name = "titi" %}{% include test_include.html %}'
+                    expected: 'titi'
+                    nl2space: true
+
+            include_relative:
+                doc: 'http://jekyllrb.com/docs/templates/#includes'
                 tests:
-                  - tag: '{{ site.tests.posts[0] | jsonify }}'
-                    expected: '{"title":"A","content":"A title body","weight":30}'
 
-            sort:
-                doc: 'http://jekyllrb.com/docs/templates/#filters'
-                tests:
-                  - tag: '{% assign posts = site.tests.posts | sort: "weight" %}{% for post in posts %}{{ post.title }}{% endfor %}'
-                    expected: 'baBA'
+                  - desc: simple include_relative
+                    tag: '{% include_relative _includes/test_en.html %}'
+                    expected: 'english include'
+                    nl2space: true
 
-                  - tag: '{% assign posts = site.tests.posts | sort: "weight", "last" %}{% for post in posts %}{{ post.title }}{% endfor %}'
-                    expected: 'aBAb'
+                  - desc: include_relative with file name in a variable
+                    tag: '{% assign tpl = "_includes/test_en.html" %}{% include_relative {{ tpl }} %}'
+                    expected: 'english include'
+                    nl2space: true
 
-                  - tag: '{% assign posts = site.tests.posts | sort: "weight", "first" %}{% for post in posts %}{{ post.title }}{% endfor %}'
-                    expected: 'baBA'
+                  - desc: include_relative with "dynamic" file name concatenation
+                    tag: '{% assign lang = "en" %}{% capture filename %}_includes/test_{{ lang }}.html{% endcapture %}{% include_relative {{filename}} %}'
+                    expected: 'english include'
+                    nl2space: true
+
+                  - desc: include_relative with "dynamic" file name concatenation in include tag
+                    tag: '{% assign lang = "en" %}{% include_relative _includes/test_{{ lang }}.html %}'
+                    comment: 'Jekyll 2.3 - Only one variable tag is allowed in the include tag.'
+                    expected: 'english include'
+                    nl2space: true
+                    exception: true
+
+                  - desc: include_relative calling variable defined in parent template
+                    tag: '{% assign name = "titi" %}{% include_relative _includes/test_include.html %}'
+                    expected: 'titi'
+                    nl2space: true
+
+
 
 kramdown:
 
