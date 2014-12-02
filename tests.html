@@ -6,7 +6,7 @@ weight: 30
 ---
 <div id="testingJekyll">
 
-    <h1>Testing Tags in Jekyll {{ jekyll.version }} -
+    <h1>Testing Tags and Filters available in Jekyll {{ jekyll.version }} -
     <small>
       Test count <span class="testNumber"></span>
       - Passed <span class="passedTests"></span>
@@ -14,7 +14,7 @@ weight: 30
     </small>
     </h1>
 
-    <p class="intro">Here are some tests (to be completed) that tells you which tags are working on current Github Pages Gem's versions <a href="#footer">(see current versions at the bottom of this page)</a>.
+    <p class="intro">Here are some tests (to be completed) that tells you which tag/filter are working on current Github Pages Gem's versions <a href="#footer">(see current versions at the bottom of this page)</a>.
     <br>
     This is a work in progress, feel free to contribute <a href="https://github.com/djacquel/JekyllDoc">via github repository</a>.
     </p>
@@ -3532,7 +3532,7 @@ Three&lt;br /&gt;
                 </code>
                 <dl class="dl-horizontal">
                     
-                    <dt>Expected</dt><dd class="expected">{"title"=>"a", "content"=>"a title body", "weight"=>10}</dd>
+                    <dt>Expected</dt><dd class="expected">{"title"=>"a", "content"=>"a title body", "weight"=>10, "group"=>"titi"}</dd>
                     <dt>Result</dt><dd class="result">{% capture post %}{{ site.tests.posts | where:"weight", 10 }}{% endcapture %}{{ post }}</dd>
                     
                     <dt>Comment</dt><dd>this filter need better testing</dd>

@@ -513,7 +513,7 @@ jekyll:
                 tests:
                   - tag: '{% capture post %}{{ site.tests.posts | where:"weight", 10 }}{% endcapture %}{{ post }}'
                     comment: this filter need better testing
-                    expected: '{"title"=>"a", "content"=>"a title body", "weight"=>10}'
+                    expected: '{"title"=>"a", "content"=>"a title body", "weight"=>10, "group"=>"titi"}'
 
             group_by:
 
