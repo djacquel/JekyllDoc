@@ -59,20 +59,6 @@
     url: http://ajoz.github.io/2014/06/29/i-want-my-github-flavored-markdown/
     name: I want my Github Flavored Markdown
 
-'Twitter Bootstrap':
-
-  twb:
-    url:  https://github.com/twbs/bootstrap
-    name: Twitter Bootstrap
-
-  twbsass:
-    url:  https://github.com/twbs/bootstrap-sass
-    name: Twitter Bootstrap Sass port
-
-  sass:
-    url:  http://sass-lang.com/
-    name: Sass
-
 'Publish your site':
 
   ghpages:
@@ -119,7 +105,31 @@
     url: http://getpoole.com/
     name: Poole
 
-'Various':
+'Style tools':
+
+  twb:
+    url:  https://github.com/twbs/bootstrap
+    name: Twitter Bootstrap
+
+  twbsass:
+    url:  https://github.com/twbs/bootstrap-sass
+    name: Twitter Bootstrap Sass port
+
+  sass:
+    url:  http://sass-lang.com/
+    name: Sass
+
+'about Static web':
+
+  staticapps:
+    url:  http://www.staticapps.org/
+    name: A Field Guide To Static Apps
+
+  staticgen:
+    url: http://www.staticgen.com/
+    name: StaticGen
+
+'Misc':
 
   ruby:
     url:  https://www.ruby-lang.org/
@@ -132,3 +142,7 @@
   ub:
     url:  http://www.ubuntu.com/
     name: Unbuntu
+
+  Twitter:
+    url: https://twitter.com/djacquel/lists/jekyll
+    name: Jekyll ecosystem on twitter
