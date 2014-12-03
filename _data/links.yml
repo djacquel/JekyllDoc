@@ -25,6 +25,16 @@
     url: http://stackoverflow.com/questions/tagged/jekyll
     name: Jekyll on Stack Overflow
 
+'Jekyll frameworks':
+
+  octo:
+    url: http://octopress.org/
+    name: Octopress
+
+  jb:
+    url: http://jekyllbootstrap.com/
+    name: Jekyll bootstrap
+
 'Liquid':
 
   liquid:
@@ -63,19 +73,23 @@
     url:  http://sass-lang.com/
     name: Sass
 
-'Github pages':
+'Publish your site':
 
   ghpages:
     url:  https://pages.github.com/
     name: Github Pages
 
-  gfm:
-    url:  https://pages.github.com/
-    name: Github Flavored Mardown
-
   ghpages-jekyll:
     url: https://help.github.com/articles/using-jekyll-with-pages/
     name: Using Jekyll with Pages
+
+  btbal:
+    url: https://www.bitballoon.com/
+    name: BitBalloon
+
+  divshot:
+    url: https://divshot.com/
+    name: DIVSHOT
 
 'Jekyll editors':
 
@@ -86,6 +100,24 @@
   cldcann:
     url: http://cloudcannon.com/github_pages
     name: cloudcannon
+
+'Jekyll themes':
+
+  jekyllthmes:
+    url: http://jekyllthemes.org/
+    name: Jekyll themes
+
+  mademistakes:
+    url: https://mademistakes.com/work/jekyll-themes/
+    name: Made Mistakes
+
+  muffin:
+    url: http://richbray.me/muffin/
+    name: Muffin
+
+  poole:
+    url: http://getpoole.com/
+    name: Poole
 
 'Various':
 
