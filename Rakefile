@@ -60,7 +60,7 @@ task :test do
         post.puts "---"
         post.puts "layout: default"
         post.puts "menu: main"
-        post.puts "title: Tests"
+        post.puts "title: Tags and Filters"
         post.puts "weight: 30"
         post.puts "---"
         post.puts warning
