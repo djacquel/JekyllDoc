@@ -1,0 +1,39 @@
+# variables for tests page
+
+# ++++++++++++++++ WARNING ++++++++++++++++++++++
+# any changes in this file may break tests
+# verify that it's not the case when you ammend this file !
+# +++++++++++++++++++++++++++++++++++++++++++++++
+
+multi-dim-array:
+  arrayone:
+    - one
+    - two
+    - three
+  arraytwo: [four, five, six]
+
+posts:
+  - title: A
+    content:  A title body
+    weight: 30
+    group: toto
+
+  - title: a
+    content: a title body
+    weight: 10
+    group: titi
+
+  - title: B
+    content: B title body
+    weight: 20
+    group: toto
+
+  - title: b
+    content: b title body
+
+string-with-newlines: |
+         One
+         Two
+         Three
+
+array-with-one-element: ['one']
