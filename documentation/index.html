@@ -4,18 +4,17 @@ menu: main
 title: Documentation
 weight: 60
 ---
-
-
 <h1>Where to find usefull Jekyll documentation</h1>
-
-<h2>Some Links</h2>
-
-<ul>
-{% for link in site.data.links.documentation %}
-
-<li>
-<a href="{{link[1].url}}">{{link[1].name}}</a>
-</li>
-
+{% assign itemPerRaw = 3 %}{% assign rawStart   = true %}
+{% for cat in site.data.links %}{% if rawStart == true %}<div class="row">{% assign rawStart = false %}{% assign itemNumber = 0 %}{% endif %}
+    <div class="col-md-4 docrub">
+        <h2>{{ cat[0] }}</h2>
+        <ul>{% for link in cat[1] %}
+            <li><a href="{{link[1].url}}">{{link[1].name}}</a></li>
+        {% endfor %}</ul>
+    </div>
+    {% assign itemNumber = itemNumber | plus: 1 %}
+    {% if itemNumber == itemPerRaw %}</div>
+        {% assign rawStart = true %}
+    {% endif %}
 {% endfor %}
-</ul>
