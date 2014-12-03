@@ -1,5 +1,5 @@
 
-documentation:
+'Jekyll':
 
   jkl:
     url:  http://jekyllrb.com/
@@ -9,11 +9,23 @@ documentation:
     url: http://rdoc.info/github/jekyll/jekyll/file/README.markdown
     name: Jekyll API
 
+  jklhelp:
+    url: https://github.com/jekyll/jekyll-help
+    name: Jekyll help (github)
+
+  jkldev:
+    url: https://groups.google.com/forum/#!forum/jekyll-dev
+    name: Jekyll dev (Google group)
+
+  jkltalk:
+    url: https://groups.google.com/forum/#!forum/jekyllrb-talk
+    name: Jekyll talks (Google group)
 
   sojekyll:
     url: http://stackoverflow.com/questions/tagged/jekyll
     name: Jekyll on Stack Overflow
 
+'Liquid':
 
   liquid:
     url: http://docs.shopify.com/themes/liquid-documentation/basics
@@ -27,7 +39,17 @@ documentation:
     url: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
     name: Liquid for designers
 
+'Markdown':
 
+  kramdown:
+    url: http://kramdown.gettalong.org/documentation.html
+    name: Kramdown documentation
+
+  mkdncompare:
+    url: http://ajoz.github.io/2014/06/29/i-want-my-github-flavored-markdown/
+    name: I want my Github Flavored Markdown
+
+'Twitter Bootstrap':
 
   twb:
     url:  https://github.com/twbs/bootstrap
@@ -41,6 +63,8 @@ documentation:
     url:  http://sass-lang.com/
     name: Sass
 
+'Github pages':
+
   ghpages:
     url:  https://pages.github.com/
     name: Github Pages
@@ -49,12 +73,21 @@ documentation:
     url:  https://pages.github.com/
     name: Github Flavored Mardown
 
+  ghpages-jekyll:
+    url: https://help.github.com/articles/using-jekyll-with-pages/
+    name: Using Jekyll with Pages
 
-  mkdncompare:
-    url: http://ajoz.github.io/2014/06/29/i-want-my-github-flavored-markdown/
-    name: I want my Github Flavored Markdown
+'Jekyll editors':
 
-various:
+  prose:
+    url: http://prose.io
+    name: prose
+
+  cldcann:
+    url: http://cloudcannon.com/github_pages
+    name: cloudcannon
+
+'Various':
 
   ruby:
     url:  https://www.ruby-lang.org/
