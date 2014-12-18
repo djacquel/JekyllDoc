@@ -5,9 +5,9 @@
     url:  http://jekyllrb.com/
     name: Jekyll
 
-  jklapi:
-    url: http://rdoc.info/github/jekyll/jekyll/file/README.markdown
-    name: Jekyll API
+  jklapi252:
+    url: http://www.rubydoc.info/github/jekyll/jekyll/e23a74
+    name: Jekyll 2.5.2 API
 
   jklhelp:
     url: https://github.com/jekyll/jekyll-help
@@ -75,7 +75,7 @@
 
   divshot:
     url: https://divshot.com/
-    name: DIVSHOT
+    name: Divshot
 
 'Jekyll editors':
 
@@ -84,7 +84,7 @@
     name: prose
 
   cldcann:
-    url: http://cloudcannon.com/github_pages
+    url: http://cloudcannon.com
     name: cloudcannon
 
 'Jekyll themes':
