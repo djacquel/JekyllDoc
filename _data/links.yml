@@ -49,6 +49,10 @@
     url: https://github.com/Shopify/liquid/wiki/Liquid-for-Designers
     name: Liquid for designers
 
+  jekyllsnippets:
+    url: https://github.com/mdo/jekyll-snippets
+    name: Library of commonly used snippets for Jekyll sites.
+
 'Markdown':
 
   kramdown:
