@@ -89,7 +89,7 @@ jekyll:
                 doc: 'http://jekyllrb.com/docs/templates/#filters'
                 tests:
                   - tag: '{{ site.data.test-datas.posts[0] | jsonify }}'
-                    expected: '{"title":"A","content":"A title body","weight":30}'
+                    expected: '{"title":"A","content":"A title body","weight":30,"group":"toto"}'
 
             sort:
                 doc: 'http://jekyllrb.com/docs/templates/#filters'
