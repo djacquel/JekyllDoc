@@ -5,6 +5,10 @@
     url:  http://jekyllrb.com/
     name: Jekyll
 
+  jktalk:
+    url: https://talk.jekyllrb.com/
+    name: Jekyll talk
+
   jklapi252:
     url: http://www.rubydoc.info/github/jekyll/jekyll/e23a74
     name: Jekyll 2.5.2 API
@@ -132,6 +136,11 @@
   staticgen:
     url: http://www.staticgen.com/
     name: StaticGen
+
+  staticsitegen:
+    url: https://staticsitegenerators.net/
+    name: The definitive listing of Static Site Generators — all 394 of them!
+
 
 'Misc':
 
