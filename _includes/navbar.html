@@ -19,10 +19,4 @@
       </div>
     </nav>
 <hr>
-{% for link in site.nav %}
-  <li>
-    <a {% if link.url == page.url %}
-      class="active"
-      {% endif %} href="{{ link.url }}">{{ link.text }}</a>
-  </li>
-{% endfor %}
+

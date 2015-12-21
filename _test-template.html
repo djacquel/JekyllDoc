@@ -1,9 +1,7 @@
 ---
 
 ---
-
 <div id="testingJekyll">
-
   <h1>Testing Jekyll {{ jekyll.version }} -
     <small>
       Test count <span class="testNumber"></span>
@@ -13,8 +11,6 @@
   </h1>
   <div id="toc">
     <ul>{% assign panelCount = 0 %}{% for owner in site.data.tests %}<li><strong>{{ owner[0] }}</strong></li>{% for rub in owner[1] %}{% for cat in rub[1] %}
-
-
 
     {% for tag in cat[1] %}{% assign testCount = 0 %}{% assign testLights = '' %}
 {% for test in tag[1].tests %}{% assign testCount = testCount | plus: 1 %}{% assign panelCount = panelCount | plus: 1 %}{% if forloop.first == true %}{% capture link %}<a href="#panel-{{ panelCount }}" class="" id="link-{{ panelCount }}">{{ rub[0] }}:{{ cat[0] }}:{{ tag[0] }}</a>{% endcapture %}{% endif %}{% capture testLight %}<span id="testLight-{{ panelCount }}" data-testid="{{ panelCount }}" class="testLight"></span>{% endcapture %}{% assign testLights = testLights | append: testLight %}{% endfor %}

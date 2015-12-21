@@ -17,18 +17,18 @@
   <div class="col-md-12">
     <p class="text-right">Jekyll version {{ jekyll.version }}</p>
     {% if site.github %}
-<p>Current rubygems version in use at Github Pages are :</p>
-<ul class="listToMargin">
-{% for gem in site.github.versions %}
-<li class="label label-info">{{ gem[0] }} {{ gem[1] }}</li>
-{% endfor %}
-</ul>
-{% endif %}
+    <p>Current rubygems version in use at Github Pages are :</p>
+    <ul class="listToMargin">
+    {% for gem in site.github.versions %}
+    <li class="label label-info">{{ gem[0] }} {{ gem[1] }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
   </div>
 </footer>
 
 <script>googleAnalyticsCode = '{{site.googleAnalyticsCode }}';</script>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="{{ site.baseurl }}/assets/javascripts/jquery.min.js"></script>
 <script type="text/javascript" src="{{ site.baseurl }}/assets/javascripts/bootstrap.js"></script>
 
 <script type="text/javascript" src="{{ site.baseurl }}/assets/javascripts/scripts.js"></script>

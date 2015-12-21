@@ -51,3 +51,7 @@ twb-sass-version: 2.3.0
 
 gems:
     - jekyll-redirect-from
+    - jekyll-github-metadata
+
+# used by jekyll-github-metadata to get gh pages metadatas locally
+repository: me/super-cool-project
