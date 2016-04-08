@@ -17,12 +17,13 @@
   <div class="col-md-12">
     <p class="text-right">Jekyll version {{ jekyll.version }}</p>
     {% if site.github %}
-    <p>Current rubygems version in use at Github Pages are :</p>
+    <p>Versions of rubygems used at Github Pages when this page was generated ({{ site.time | date: '%F %T' }}):</p>
     <ul class="listToMargin">
     {% for gem in site.github.versions %}
     <li class="label label-info">{{ gem[0] }} {{ gem[1] }}</li>
     {% endfor %}
     </ul>
+    <p>Up-to-date version info is available at <a href="https://pages.github.com/versions/">https://pages.github.com/versions/</a></p>
     {% endif %}
   </div>
 </footer>
